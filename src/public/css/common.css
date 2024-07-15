@@ -1,0 +1,149 @@
+body {
+    background-color: #eee;
+}
+
+.header {
+    background: #eee;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px 0 15px;
+}
+
+.header-utilities {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo {
+    color: #3366FF;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 50px;
+}
+
+/*========= ナビゲーションのためのCSS ===============*/
+#g-nav {
+    /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+    position: fixed;
+    z-index: -1;
+    opacity: 0;
+    /*はじめは透過0*/
+    /*ナビの位置と形状*/
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    /*ナビの高さ*/
+    background: #eee;
+    /*動き*/
+    transition: all 0.3s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav.panelactive {
+    opacity: 1;
+    z-index: 999;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list {
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    /*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+    display: none;
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#g-nav.panelactive ul {
+    display: block;
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li {
+    list-style: none;
+    text-align: center;
+}
+
+#g-nav li a {
+    color: #3366FF;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn {
+    position: fixed;
+    z-index: 9999;
+    /*ボタンを最前面に*/
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background-color: #3366FF;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #777;
+}
+
+/*×に変化*/
+.openbtn span {
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 10px;
+    height: 1px;
+    border-radius: 2px;
+    background-color: #fff;
+    width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+    top: 9px;
+    width: 25%;
+}
+
+.openbtn span:nth-of-type(2) {
+    top: 16px;
+}
+
+.openbtn span:nth-of-type(3) {
+    top: 23px;
+    width: 13%;
+}
+
+.openbtn.active span:nth-of-type(1) {
+    top: 10px;
+    left: 10px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 40%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+    opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3) {
+    top: 22px;
+    left: 10px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 40%;
+}

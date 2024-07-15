@@ -1,0 +1,27 @@
+.thanks {
+    margin: 5% 20%;
+    padding: 15% 0;
+    background-color: #fff;
+}
+
+.thanks-message {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+
+.thanks-form__button {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.thanks-form__button-submit {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: #3366FF;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}

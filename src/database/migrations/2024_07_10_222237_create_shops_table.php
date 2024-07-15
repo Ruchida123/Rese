@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRestaurantsTable extends Migration
+class CreateShopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRestaurantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('restaurants', function (Blueprint $table) {
+        Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->string('store_name');
+            $table->string('name');
             $table->foreignId('region_id')->nullable()->constrained();
             $table->foreignId('genre_id')->nullable()->constrained();
-            $table->string('store_summary')->nullable();
+            $table->string('summary')->nullable();
             $table->string('image_url')->nullable();
         });
     }
@@ -30,6 +30,6 @@ class CreateRestaurantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurants');
+        Schema::dropIfExists('shops');
     }
 }
