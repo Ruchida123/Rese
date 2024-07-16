@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <title>Rese</title>
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
   <link rel="stylesheet" href="{{ asset('css/common.css') }}">
@@ -18,7 +20,7 @@
         <div class="openbtn"><span></span><span></span><span></span>
         </div>
         <nav id="g-nav">
-          <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+          <div id="g-nav-list">
             <ul>
             <li><a href="/">Home</a></li>
             @if (Auth::check())
@@ -45,8 +47,6 @@
     @yield('content')
   </main>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <!--自作のJS-->
   <script src="{{ asset('js/menu.js') }}"></script>
 </body>
 
