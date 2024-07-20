@@ -1,4 +1,8 @@
 $(function () {
+  // 変数に要素を入れる
+  var close = $('.modal-close'),
+    container = $('.modal-container');
+
   let like = $('.favorite-img'); //favorite-imgのついたimgタグを取得し代入。
   like.on('click', function () { //onはイベントハンドラー
     let $this = $(this); //this=イベントの発火した要素＝imgタグを代入
@@ -20,11 +24,26 @@ $(function () {
         console.log('success',data);
     })
     //通信失敗した時の処理
-    .fail(function (data) {
-      if (data.status === 401) {
-        alert('お気に入り登録するにはログインが必要です。');
-      }
+      .fail(function (data) {
       console.log('fail',data);
+      if (data.status === 401) {
+        //モーダルを表示する
+        container.addClass('active');
+        return false;
+      }
     });
+  });
+
+  // モーダル
+  //閉じるボタンをクリックしたらモーダルを閉じる
+  close.on('click',function(){
+    container.removeClass('active');
+  });
+
+  //モーダルの外側をクリックしたらモーダルを閉じる
+  $(document).on('click',function(e) {
+    if(!$(e.target).closest('.modal-body').length) {
+      container.removeClass('active');
+    }
   });
 });

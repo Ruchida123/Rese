@@ -10761,6 +10761,9 @@ var __webpack_exports__ = {};
   \**********************************/
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 $(function () {
+  // 変数に要素を入れる
+  var close = $('.modal-close'),
+    container = $('.modal-container');
   var like = $('.favorite-img'); //favorite-imgのついたimgタグを取得し代入。
   like.on('click', function () {
     //onはイベントハンドラー
@@ -10789,11 +10792,26 @@ $(function () {
     })
     //通信失敗した時の処理
     .fail(function (data) {
-      if (data.status === 401) {
-        alert('お気に入り登録するにはログインが必要です。');
-      }
       console.log('fail', data);
+      if (data.status === 401) {
+        //モーダルを表示する
+        container.addClass('active');
+        return false;
+      }
     });
+  });
+
+  // モーダル
+  //閉じるボタンをクリックしたらモーダルを閉じる
+  close.on('click', function () {
+    container.removeClass('active');
+  });
+
+  //モーダルの外側をクリックしたらモーダルを閉じる
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.modal-body').length) {
+      container.removeClass('active');
+    }
   });
 });
 /******/ })()

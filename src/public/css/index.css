@@ -1,31 +1,205 @@
-.shop__alert--success {
-    padding: 10px 30px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
-    color: #0f5132;
+.search-form {
+    display: flex;
+    justify-content: right;
 }
 
-.shop__alert--danger {
-    padding: 10px 30px;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    color: #842029;
-}
-
-.shop__alert--danger ul {
-    margin: 0;
-}
-
-.shop__content {
+.shop {
     display: flex;
     flex-wrap: wrap;
     margin: 10px 15px;
     justify-content: space-between;
 }
 
-.shop__panel {
+@media screen and (min-width: 960px) {
+    .search-form__item {
+        text-align: right;
+        white-space: nowrap;
+        width: 50%;
+        font-size: 0;
+        margin: -35px 15px 15px 0;
+    }
+
+    .search-form__item-region {
+        width: 18%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-genre {
+        width: 20%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-keyword {
+        width: 60%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .shop-content {
+        display: flex;
+        flex-direction: column;
+        width: 24%;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #777;
+    }
+
+    .shop-content__name {
+        font-weight: bold;
+        padding: 15px 0 0 15px;
+    }
+
+    .shop-content__tag {
+        font-size: x-small;
+        padding: 0 0 10px 15px;
+    }
+
+    .detail-button {
+        width: 85px;
+        white-space: nowrap;
+        color: #fff;
+        background-color: #3366FF;
+        border-color: #3366FF;
+        border-radius: 3px;
+        font-size: small;
+        cursor: pointer;
+    }
+}
+
+@media screen and (768px <= width <= 959px) {
+    .search-form__item {
+        text-align: right;
+        white-space: nowrap;
+        width: 70%;
+        font-size: 0;
+        margin: -35px 15px 15px 0;
+    }
+
+    .search-form__item-region {
+        width: 25%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-genre {
+        width: 25%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-keyword {
+        width: 40%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .shop-content {
+        display: flex;
+        flex-direction: column;
+        width: 32%;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #777;
+    }
+
+    .shop-content__name {
+        font-size: x-large;
+        font-weight: bold;
+        padding: 15px 0 0 15px;
+    }
+
+    .shop-content__tag {
+        padding: 0 0 10px 15px;
+    }
+
+    .detail-button {
+        width: 110px;
+        white-space: nowrap;
+        color: #fff;
+        background-color: #3366FF;
+        border-color: #3366FF;
+        border-radius: 3px;
+        font-size: large;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__item {
+        text-align: right;
+        white-space: nowrap;
+        width: 80%;
+        font-size: 0;
+        margin: 5px 15px 10px 0;
+    }
+
+    .search-form__item-region {
+        width: 26%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-genre {
+        width: 32%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .search-form__item-keyword {
+        width: 40%;
+        padding: 10px 5px;
+        border-color: #fff;
+    }
+
+    .shop-content {
+        display: flex;
+        flex-direction: column;
+        width: 49%;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #777;
+    }
+
+    .shop-content__name {
+        font-size: large;
+        font-weight: bold;
+        padding: 15px 0 0 15px;
+    }
+
+    .shop-content__tag {
+        padding: 0 0 10px 15px;
+    }
+
+    .detail-button {
+        color: #fff;
+        background-color: #3366FF;
+        border-color: #3366FF;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}
+
+.shop-content img {
+    border-radius: 5px 5px 0 0;
+}
+
+.shop-content__detail {
     display: flex;
-    flex-direction: column;
-    width: 24%;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    padding: 0 15px 15px 15px;
+}
+
+.favorite-img {
+    width: 20%;
+    filter: invert(90%);
+    cursor: pointer;
+}
+
+.liked {
+    filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
 }
