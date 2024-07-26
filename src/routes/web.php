@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\FavoriteController;
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/thanks', [RegisterController::class, 'thanks']);
+Route::post('/reserve', [ReservationController::class, 'reserve']);
 
 Route::middleware('auth')->group(function () {
     Route::post('/favorite', [FavoriteController::class, 'favorite']);

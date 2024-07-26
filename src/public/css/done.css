@@ -1,0 +1,27 @@
+.done {
+    margin: 5% 20%;
+    padding: 15% 0;
+    background-color: #fff;
+}
+
+.done-message {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+
+.done-form__button {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.done-form__button-submit {
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: #3366FF;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}

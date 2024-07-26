@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/js/menu.js": "/js/menu.js",
     "/js/favorite.js": "/js/favorite.js",
+    "/js/detail.js": "/js/detail.js",
     "/css/app.css": "/css/app.css"
 }

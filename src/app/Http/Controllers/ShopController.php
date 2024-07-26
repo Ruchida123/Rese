@@ -34,8 +34,26 @@ class ShopController extends Controller
         // 飲食店
         $shop = Shop::with('region', 'genre')->find($shop_id);
 
+        // 時間用リスト
+        $times = array();
+        for ($i = 0; $i < 24; $i++) {
+            // 2桁で0埋め
+            $hour = sprintf('%02d', $i);
+            // 30分単位
+            for ($j = 0; $j < 60; $j += 30) {
+                $times[] = $hour.':'.sprintf('%02d', $j);
+            }
+        };
+
+        // 人数用リスト
+        $numbers = array();
+        $ranges = range(1,100);
+        foreach ($ranges as $range) {
+            $numbers[] = strval($range);
+        };
+
         // 飲食店詳細ページ表示
-        return view('detail', compact('shop'));
+        return view('detail', compact('shop', 'times', 'numbers'));
     }
 
 }

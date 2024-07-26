@@ -22,7 +22,6 @@ class CreateReservationsTable extends Migration
             $table->integer('number');
             $table->boolean('delete_flag');
             $table->timestamps();
-            $table->unique(['user_id', 'shop_id']);
         });
     }
 
