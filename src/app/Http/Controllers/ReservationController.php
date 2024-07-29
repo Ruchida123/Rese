@@ -19,11 +19,21 @@ class ReservationController extends Controller
             'shop_id' => $shop_id,
             'date' => $request->date,
             'time' => $request->time,
-            'number' => $request->number,
-            'delete_flag' => false,
+            'number' => $request->number
         ]);
 
         // 予約完了ページ表示
         return view('done', compact('shop_id'));
+    }
+
+    public function delete(Request $request)
+    {
+        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $reserve_id = $request->reserve_id; // 予約idの取得
+
+        Reservation::find($reserve_id)->delete();
+
+        // 予約完了ページ表示
+        return redirect('/mypage');
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Reservation extends Model
 {
@@ -14,7 +16,17 @@ class Reservation extends Model
         'shop_id',
         'date',
         'time',
-        'number',
-        'delete_flag'
+        'number'
     ];
+
+    public function shop(){
+        return $this->belongsTo('App\Models\Shop');
+    }
+
+    public function scopeUserReserveShopsSearch($query, $user_id)
+    {
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id);
+        }
+    }
 }

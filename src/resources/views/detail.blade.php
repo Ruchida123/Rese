@@ -53,13 +53,17 @@
     <div class="detail-reserve">
       <span class="reserve__title">予約</span>
       <div class="reserve__date">
-        <input class="reserve__date-item" type="date" name="date" value="{{ old('date') }}" placeholder="年/月/日"/>
+        <input id="reserveDate" class="reserve__date-item" type="date" name="date" value="{{ old('date') }}" placeholder="年/月/日"/>
       </div>
       <div class="reserve__time">
         <select class="reserve__time-item" name="time">
           <option value="">予約時間を選択してください</option>
           @foreach ($times as $time)
-          <option value="{{ $time }}">{{ $time }}</option>
+            @if(old('time') == $time)
+              <option value="{{ $time }}" selected>{{ $time }}</option>
+            @else
+              <option value="{{ $time }}">{{ $time }}</option>
+            @endif
           @endforeach
         </select>
       </div>
@@ -67,7 +71,11 @@
         <select class="reserve__num-item" name="number">
           <option value="">予約人数を選択してください</option>
           @foreach ($numbers as $number)
-          <option value="{{ $number }}">{{ $number }}人</option>
+            @if(old('number') == $number)
+              <option value="{{ $number }}" selected>{{ $number }}人</option>
+            @else
+              <option value="{{ $number }}">{{ $number }}人</option>
+            @endif
           @endforeach
         </select>
       </div>

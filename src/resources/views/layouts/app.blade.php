@@ -28,7 +28,7 @@
               @csrf
               <li><a onclick="document.forms[0].submit();">Logout</a></li>
             </form>
-            <li><a href="#">Mypage</a></li>
+            <li><a href="/mypage">Mypage</a></li>
             @else
             <li><a href="/register">Registration</a></li>
             <li><a href="/login">Login</a></li>

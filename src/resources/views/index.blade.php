@@ -62,7 +62,7 @@
   </div>
   @endforeach
 </div>
-<!-- 詳細モーダル -->
+<!-- お気に入り登録エラーモーダル -->
 @include('modal.favorite_error')
 <script src="{{ asset('js/favorite.js') }}"></script>
 @endsection
