@@ -70,4 +70,21 @@ class ShopController extends Controller
         return view('mypage', compact('user', 'reserves', 'favorites'));
     }
 
+    public function search(Request $request)
+    {
+        $favorites = []; // お気に入り情報
+        if (Auth::check()) { // ログインしてたらお気に入り情報取得
+            $user_id = Auth::user()->id;
+            $favorites = Favorite::UserFavoriteShopsSearch($user_id)->get();
+        }
+        // 飲食店一覧
+        $shops = Shop::with('region', 'genre')->RegionSearch($request->region)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
+        // 地域一覧
+        $regions = Region::all();
+        // ジャンル一覧
+        $genres = Genre::all();
+
+        // 飲食店一覧ページ表示
+        return view('index', compact('shops', 'regions', 'genres', 'favorites'));
+    }
 }

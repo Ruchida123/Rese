@@ -19,11 +19,12 @@ use App\Http\Controllers\ReservationController;
 
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+Route::get('/search', [ShopController::class, 'search']);
 Route::get('/thanks', [RegisterController::class, 'thanks']);
 Route::post('/reserve', [ReservationController::class, 'reserve']);
 
 Route::middleware('auth')->group(function () {
-    Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
+    Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::delete('/reserve', [ReservationController::class, 'delete']);
 });

@@ -16,4 +16,25 @@ class Shop extends Model
     public function genre(){
         return $this->belongsTo('App\Models\Genre');
     }
+
+    public function scopeRegionSearch($query, $region_id)
+    {
+        if (!empty($region_id)) {
+            $query->where('region_id', $region_id);
+        }
+    }
+
+    public function scopeGenreSearch($query, $genre_id)
+    {
+        if (!empty($genre_id)) {
+            $query->where('genre_id', $genre_id);
+        }
+    }
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+    }
 }

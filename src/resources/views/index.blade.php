@@ -7,25 +7,24 @@
 @endsection
 
 @section('content')
-<form class="search-form" action="/search" method="get">
-  @csrf
-  <div class="search-form__item">
-    <select class="search-form__item-region" name="region">
+<div class="search">
+  <div class="search-item">
+    <select class="search-item__region region-width" name="region">
       <option value="">All area</option>
       @foreach ($regions as $region)
       <option value="{{ $region['id'] }}">{{ $region['name'] }}</option>
       @endforeach
     </select>
-    <select class="search-form__item-genre" name="genre">
+    <select class="search-item__genre genre-width" name="genre">
       <option value="">All genre</option>
       @foreach ($genres as $genre)
       <option value="{{ $genre['id'] }}">{{ $genre['name'] }}</option>
       @endforeach
     </select>
-    <input class="search-form__item-keyword" type="search" name="keyword"
+    <input class="search-item__keyword keyword-width" type="search" name="keyword"
       value="{{ old('keyword') }}" placeholder="&#x1f50d; Search..."/>
   </div>
-</form>
+</div>
 
 <div class="shop">
   @foreach ($shops as $shop)
