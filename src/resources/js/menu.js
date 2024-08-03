@@ -1,11 +1,20 @@
-$(".openbtn").click(function () {//ボタンがクリックされたら
+$(document).on('click', '.openbtn', function () {//ボタンがクリックされたら
 	$(this).toggleClass('active');//ボタン自身に activeクラスを付与し
-    $("#g-nav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+    $('#g-nav').toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
 });
 
-$("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
-    $(".openbtn").removeClass('active');//ボタンの activeクラスを除去し
-    $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+$(document).on('click', '#g-nav a', function () {//ナビゲーションのリンクがクリックされたら
+    $('.openbtn').removeClass('active');//ボタンの activeクラスを除去し
+    $('#g-nav').removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+});
+
+// スクロールしたらクラス付与
+$(window).scroll(function () {
+    if($(window).scrollTop() > 20) {
+        $('.openbtn').addClass('opacity');
+    } else {
+        $('.openbtn').removeClass('opacity');
+    }
 });
 
 $(function () {
@@ -45,7 +54,7 @@ $(function () {
         })
         //通信成功した時の処理
         .done(function (data) {
-            console.log('success', data);
+            console.log('Shop search success');
             var innerHTML = $('.shop', $(data)).html(); // 取得したHTMLから飲食店一覧を抽出
             $('.shop').html(innerHTML); // 抽出したもので現在のページの中身を置き換える
         })

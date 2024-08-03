@@ -10,16 +10,9 @@
     margin: 0;
 }
 
-.detail {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 20px 40px 20px;
-}
-
 .detail-content {
     display: flex;
     flex-direction: column;
-    width: 47%;
 }
 
 .detail-content__title {
@@ -27,17 +20,20 @@
     margin: 30px 0 15px 0;
 }
 
-.title-form {
+.title-button {
     display: flex;
     align-items: center;
 }
 
-.title-form__button {
+.title-button__link {
+    text-decoration: none;
     background-color: #fff;
     border-color: #fff;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px #777;
+    box-shadow: 2px 2px 2px #777;
     font-weight: bold;
+    font-size: small;
+    padding: 3px 6px;
 }
 
 .title-name {
@@ -55,14 +51,7 @@
     font-size: small;
 }
 
-.reserve-form {
-    width: 53%;
-}
-
 .detail-reserve {
-    margin-left: 10%;
-    padding: 15px 0 0 15px;
-    height: 90%;
     background-color: #3366FF;
     border-radius: 5px 5px 0 0;
     box-shadow: 2px 2px 2px #777;
@@ -95,6 +84,7 @@
     border-radius: 5px;
     height: 25px;
     width: 90%;
+    cursor: pointer;
 }
 
 .reserve__num {
@@ -106,12 +96,12 @@
     border-radius: 5px;
     height: 25px;
     width: 90%;
+    cursor: pointer;
 }
 
 .reserve__content {
     margin-top: 10px;
     padding: 15px;
-    width: 90%;
     text-align: left;
     color: #fff;
     background-color: #6495ED;
@@ -123,11 +113,6 @@
     width: 100px;
 }
 
-.form__button {
-    margin-left: 10%;
-    height: 10%;
-}
-
 .form__button-submit {
     width: 100%;
     height: 100%;
@@ -136,4 +121,54 @@
     border: none;
     border-radius: 0 0 5px 5px;
     box-shadow: 2px 2px 2px #777;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) {
+    .detail {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 20px 40px 20px;
+    }
+
+    .detail-content__media {
+        width: 47%;
+    }
+
+    .reserve-form {
+        width: 53%;
+    }
+
+    .detail-reserve__media {
+        margin-left: 10%;
+        padding: 15px 0 0 15px;
+        height: 90%;
+    }
+
+    .reserve__content-media {
+        width: 90%;
+    }
+
+    .form__button {
+        margin-left: 10%;
+        height: 10%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .detail {
+        margin: 0 20px 40px 20px;
+    }
+
+    .detail-content__media {
+        margin-bottom: 15px;
+    }
+
+    .detail-reserve__media {
+        padding: 15px;
+    }
+
+    .form__button {
+        height: 26px;
+    }
 }

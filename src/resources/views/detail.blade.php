@@ -29,12 +29,13 @@
 @endif
 
 <div class="detail">
-  <div class="detail-content">
+  <div class="detail-content detail-content__media">
     <div class="detail-content__title">
-      <form class="title-form" action="/" method="get">
-        @csrf
-        <button class="title-form__button" type="submit">＜</button>
-      </form>
+      <div class="title-button">
+        <a class="title-button__link" href="{{ $prev_url }}">
+          ＜
+        </a>
+      </div>
       <span class="title-name">
         {{ $shop['name'] }}
       </span>
@@ -50,7 +51,7 @@
   <form class="reserve-form" action="/reserve" method="post">
     @csrf
     <input type="hidden" name="shop_id" value="{{ $shop['id'] }}"/>
-    <div class="detail-reserve">
+    <div class="detail-reserve detail-reserve__media">
       <span class="reserve__title">予約</span>
       <div class="reserve__date">
         <input id="reserveDate" class="reserve__date-item" type="date" name="date" value="{{ old('date') }}" placeholder="年/月/日"/>
@@ -79,7 +80,7 @@
           @endforeach
         </select>
       </div>
-      <div class="reserve__content">
+      <div class="reserve__content reserve__content-media">
         <table cellpadding='3'>
           <tr class="reserve__content-shop">
             <th>Shop</th>
@@ -102,6 +103,7 @@
     </div>
     <div class="form__button">
       <button class="form__button-submit" type="submit">予約する</button>
+      <input type="hidden" name="prev_url" value="{{ $prev_url }}">
     </div>
   </form>
 </div>

@@ -147,3 +147,7 @@ body {
     transform: translateY(-6px) rotate(45deg);
     width: 40%;
 }
+
+.opacity {
+    opacity: 0.5;
+}

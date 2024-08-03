@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="shop">
+<div class="shop shop-gap">
   @foreach ($shops as $shop)
   @php
     $favoriteFlag = false;

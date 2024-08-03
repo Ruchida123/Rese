@@ -150,6 +150,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .shop-gap {
+        column-gap: 6px !important;
+    }
+
     .search-item {
         text-align: right;
         white-space: nowrap;
@@ -188,6 +192,7 @@
 
     .shop-content__tag {
         padding: 0 0 10px 15px;
+        font-size: small;
     }
 
     .detail-button {
