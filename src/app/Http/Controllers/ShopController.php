@@ -30,7 +30,7 @@ class ShopController extends Controller
         return view('index', compact('shops', 'regions', 'genres', 'favorites'));
     }
 
-    public function detail($shop_id)
+    public function detail(Request $request, $shop_id)
     {
         // 飲食店
         $shop = Shop::with('region', 'genre')->find($shop_id);
@@ -53,8 +53,14 @@ class ShopController extends Controller
             $numbers[] = strval($range);
         };
 
+        $prev_url = url()->previous();	//直前のページURLを取得
+        // 予約完了から戻った時は保持していたURLを設定
+        if (strpos($prev_url, '/reserve') !== false) {
+            $prev_url = $request->prev_url;
+        }
+
         // 飲食店詳細ページ表示
-        return view('detail', compact('shop', 'times', 'numbers'));
+        return view('detail', compact('shop', 'times', 'numbers', 'prev_url'));
     }
 
     public function mypage()

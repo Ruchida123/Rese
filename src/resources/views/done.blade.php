@@ -13,6 +13,7 @@
     @csrf
     <div class="done-form__button">
       <button class="done-form__button-submit" type="submit">戻る</button>
+      <input type="hidden" name="prev_url" value="{{ $prev_url }}">
     </div>
   </form>
 </div>
