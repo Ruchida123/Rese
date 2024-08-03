@@ -1,3 +1,7 @@
+.username {
+    margin-left: 50%;
+}
+
 .mypage {
     display: flex;
     justify-content: space-between;
@@ -5,13 +9,16 @@
 
 .reserve {
     width: 50%;
+    margin-left: 15px;
 }
 
 .reserve__frame {
     padding: 15px 0 0 15px;
+    margin-bottom: 15px;
     background-color: #3366FF;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 2px 2px 2px #777;
+    width: 90%;
 }
 
 .reserve__header {
@@ -21,14 +28,11 @@
 
 .reserve__header-title {
     color: #fff;
-    font-weight: bold;
     font-size: larger;
-    margin-bottom: 15px;
 }
 
 .reserve__content {
     margin-top: 10px;
-    padding: 15px;
     width: 90%;
     text-align: left;
     color: #fff;
@@ -41,12 +45,22 @@
     width: 100px;
 }
 
+.delete-form__button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-right: 15px;
+}
+
+.favorite {
+    width: 50%;
+}
+
 .shop {
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 15px;
+    margin: 10px 15px 0 0;
     justify-content: space-between;
-    width: 50%;
     height: fit-content;
 }
 
@@ -81,13 +95,21 @@
         font-size: small;
         cursor: pointer;
     }
+
+    .i-margin {
+        margin: 0 25px 0 15px;
+    }
+
+    .reserve__content-media {
+        padding: 15px;
+    }
 }
 
 @media screen and (768px <= width <= 959px) {
     .shop-content {
         display: flex;
         flex-direction: column;
-        width: 32%;
+        width: 48%;
         margin-bottom: 10px;
         background-color: #fff;
         border-radius: 5px;
@@ -114,13 +136,21 @@
         font-size: large;
         cursor: pointer;
     }
+
+    .i-margin {
+        margin: 0 25px 0 15px;
+    }
+
+    .reserve__content-media {
+        padding: 15px;
+    }
 }
 
 @media screen and (max-width: 767px) {
     .shop-content {
         display: flex;
         flex-direction: column;
-        width: 49%;
+        width: 90%;
         margin-bottom: 10px;
         background-color: #fff;
         border-radius: 5px;
@@ -144,6 +174,18 @@
         border-radius: 3px;
         cursor: pointer;
     }
+
+    .reserve__content-media {
+        padding: 0 0 15px 0;
+    }
+
+    .reserve__content tbody tr th {
+        width: 50%;
+    }
+
+    .reserve__content tbody tr td {
+        width: 50%;
+    }
 }
 
 .shop-content img {
@@ -164,4 +206,48 @@
 
 .liked {
     filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
+}
+
+.dli-close-circle {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    line-height: 1;
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    box-sizing: content-box;
+}
+
+.dli-close-circle>span {
+    width: 52%;
+    height: 0.15em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.dli-close-circle>span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+}
+
+.grayed {
+    background-color: #777 !important;
 }

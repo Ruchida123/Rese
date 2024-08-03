@@ -15,6 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/menu.js', 'public/js')
     .js('resources/js/favorite.js', 'public/js')
     .js('resources/js/detail.js', 'public/js')
+    .js('resources/js/mypage.js', 'public/js')
     .autoload({
         "jquery": [ '$', 'window.jQuery' ],
     })

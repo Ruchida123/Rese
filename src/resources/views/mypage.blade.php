@@ -4,23 +4,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 <link rel="stylesheet" href="{{ asset('css/modal/favorite_error.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
+<h2 class="username">{{ $user['name'] }}さん</h2>
 <div class="mypage">
   <div class="reserve">
+    <h3>予約状況</h3>
     @foreach($reserves as $reserve)
     <div class="reserve__frame">
       <div class="reserve__header">
-        <span class="reserve__header-title">予約</span>
+        <span class="reserve__header-title">
+          <i class="fa fa-clock-o i-margin"></i>予約{{ $loop->iteration }}
+        </span>
         <form class="delete-form" action="/reserve" method="post">
           @method('DELETE')
           @csrf
-          <button class="delete-form__button" type="submit">×</button>
+          <button class="delete-form__button" type="submit">
+            <span class="dli-close-circle"><span></span></span>
+          </button>
           <input type="hidden" name="reserve_id" value="{{ $reserve['id'] }}">
         </form>
       </div>
-      <div class="reserve__content">
+      <div class="reserve__content reserve__content-media">
         <table cellpadding='3'>
           <tr class="reserve__content-shop">
             <th>Shop</th>
@@ -43,28 +50,32 @@
     </div>
     @endforeach
   </div>
-  <div class="shop">
-    @foreach ($favorites as $favorite)
-    <div class="shop-content">
-      <img src="{{ $favorite->shop['image_url'] }}" alt="image" />
-      <div class="shop-content__name">
-        {{ $favorite->shop['name'] }}
+  <div class="favorite">
+    <h3>お気に入り店舗</h3>
+    <div class="shop">
+      @foreach ($favorites as $favorite)
+      <div class="shop-content">
+        <img src="{{ $favorite->shop['image_url'] }}" alt="image" />
+        <div class="shop-content__name">
+          {{ $favorite->shop['name'] }}
+        </div>
+        <div class="shop-content__tag">
+          #{{ $favorite->shop->region['name'] }} #{{ $favorite->shop->genre['name'] }}
+        </div>
+        <div class="shop-content__detail">
+          <form class="detail-form" action="/detail/{{ $favorite->shop['id'] }}" method="get">
+            @csrf
+            <button class="detail-button" type="submit">詳しくみる</button>
+          </form>
+          <img class="favorite-img liked" src="{{ asset('storage/heart_icon.png') }}" data-shop_id="{{ $favorite->shop['id'] }}">
+        </div>
       </div>
-      <div class="shop-content__tag">
-        #{{ $favorite->shop->region['name'] }} #{{ $favorite->shop->genre['name'] }}
-      </div>
-      <div class="shop-content__detail">
-        <form class="detail-form" action="/detail/{{ $favorite->shop['id'] }}" method="get">
-          @csrf
-          <button class="detail-button" type="submit">詳しくみる</button>
-        </form>
-        <img class="favorite-img liked" src="{{ asset('storage/heart_icon.png') }}" data-shop_id="{{ $favorite->shop['id'] }}">
-      </div>
+      @endforeach
     </div>
-    @endforeach
   </div>
 </div>
 <!-- モーダル -->
 @include('modal.favorite_error')
 <script src="{{ asset('js/favorite.js') }}"></script>
+<script src="{{ asset('js/mypage.js') }}"></script>
 @endsection
