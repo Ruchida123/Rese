@@ -34,7 +34,52 @@ class ReservationController extends Controller
 
         Reservation::find($reserve_id)->delete();
 
-        // 予約完了ページ表示
+        // マイページ表示
         return redirect('/mypage');
+    }
+
+    public function update(ReservationRequest $request)
+    {
+        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $reserve_id = $request->reserve_id; // 予約idの取得
+
+        Reservation::ReserveShopsSearch($user_id, $reserve_id)->update([
+            'date' => $request->date,
+            'time' => $request->time,
+            'number' => $request->number
+        ]);
+
+        // マイページ表示
+        return redirect('/mypage');
+    }
+
+    public function updateView(Request $request)
+    {
+        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $reserve_id = $request->reserve_id; // 予約idの取得
+        $prev_url = url()->previous();// 直前のURL
+
+        $reservation = Reservation::with('shop', 'shop.region','shop.genre')->ReserveShopsSearch($user_id, $reserve_id)->first();
+
+        // 時間用リスト
+        $times = array();
+        for ($i = 0; $i < 24; $i++) {
+            // 2桁で0埋め
+            $hour = sprintf('%02d', $i);
+            // 30分単位
+            for ($j = 0; $j < 60; $j += 30) {
+                $times[] = $hour.':'.sprintf('%02d', $j);
+            }
+        };
+
+        // 人数用リスト
+        $numbers = array();
+        $ranges = range(1,100);
+        foreach ($ranges as $range) {
+            $numbers[] = strval($range);
+        };
+
+        // 予約完了ページ表示
+        return view('update_reserve', compact('reservation', 'times', 'numbers', 'prev_url'));
     }
 }

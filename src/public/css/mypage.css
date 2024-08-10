@@ -251,3 +251,22 @@
 .grayed {
     background-color: #777 !important;
 }
+
+.update {
+    text-align: right;
+    padding: 0 15px 15px 0;
+}
+
+.update-form__button {
+    padding: 3px 10px;
+    color: #fff;
+    background-color: #3366FF;
+    border-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #777;
+    cursor: pointer;
+}
+
+.display-none {
+    display: none;
+}

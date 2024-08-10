@@ -29,4 +29,11 @@ class Reservation extends Model
             $query->where('user_id', $user_id);
         }
     }
+
+    public function scopeReserveShopsSearch($query, $user_id, $reserve_id)
+    {
+        if (!empty($user_id)) {
+            $query->where('user_id', $user_id)->where('id', $reserve_id);
+        }
+    }
 }

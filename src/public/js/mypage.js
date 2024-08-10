@@ -10774,6 +10774,10 @@ $(function () {
       var content = $('.reserve__content');
       frame.eq(i).addClass('grayed');
       content.eq(i).addClass('grayed');
+
+      // 変更ボタンを非表示にする
+      var update = $('.update');
+      update.eq(i).addClass('display-none');
     }
   });
 });

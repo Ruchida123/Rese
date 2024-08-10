@@ -27,4 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::delete('/reserve', [ReservationController::class, 'delete']);
+    Route::patch('/reserve', [ReservationController::class, 'update']);
+    Route::get('/update_reserve', [ReservationController::class, 'updateView']);
 });

@@ -47,6 +47,15 @@
           </tr>
         </table>
       </div>
+      <div class="update">
+        <form class="update-form" action="/update_reserve" method="get">
+          @csrf
+          <button class="update-form__button" type="submit">
+            変更
+          </button>
+          <input type="hidden" name="reserve_id" value="{{ $reserve['id'] }}">
+        </form>
+      </div>
     </div>
     @endforeach
   </div>
