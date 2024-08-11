@@ -11,6 +11,10 @@ class ReservationController extends Controller
 {
     public function reserve(ReservationRequest $request)
     {
+        // メールアドレス確認しているかどうか
+        if (!Auth::user()->email_verified_at) {
+            return view('auth.verify-email');
+        }
         $user_id = Auth::id(); // ログインユーザーのid取得
         $shop_id = $request->shop_id; // 店舗idの取得
         $prev_url = $request->prev_url;// 直前のURL
