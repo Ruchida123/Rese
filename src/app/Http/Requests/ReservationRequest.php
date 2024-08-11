@@ -52,11 +52,6 @@ class ReservationRequest extends FormRequest
                 $validator->errors()->add('auth', '予約するにはログインが必要です。');
             }
 
-            // メールアドレス確認しているかどうか
-            if (!Auth::user()->email_verified_at) {
-                return view('auth.verify-email');
-            }
-
             $data = $validator->getData();
             // 日付チェック
             $inputDate = new Carbon($data['date']);

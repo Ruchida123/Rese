@@ -10763,7 +10763,8 @@ var __webpack_exports__ = {};
 $(function () {
   // 変数に要素を入れる
   var close = $('.modal-close'),
-    container = $('.modal-container');
+    container = $('.modal-container'),
+    text = $('.modal-content').children('p');
   var like = $('.favorite-img'); //favorite-imgのついたimgタグを取得し代入。
   like.on('click', function () {
     //onはイベントハンドラー
@@ -10796,8 +10797,12 @@ $(function () {
       if (data.status === 401) {
         //モーダルを表示する
         container.addClass('active');
-        return false;
+        text.text('お気に入り登録するにはログインが必要です。');
+      } else if (data.status === 403) {
+        //メールアドレス確認画面へ遷移
+        window.location.href = '/email/verify';
       }
+      return false;
     });
   });
 
