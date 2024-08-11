@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
 use Illuminate\Contracts\Auth\StatefulGuard;
-use Laravel\Fortify\Fortify;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Routing\Pipeline;
+use Laravel\Fortify\Fortify;
+use App\Http\Requests\LoginRequest;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\CanonicalizeUsername;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;

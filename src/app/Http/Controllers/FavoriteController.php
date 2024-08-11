@@ -10,7 +10,7 @@ class FavoriteController extends Controller
 {
     public function favorite(Request $request)
     {
-        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $user_id = Auth::id(); // ログインユーザーのid取得
         $shop_id = $request->shop_id; // 店舗idの取得
 
         $favorite_shop = Favorite::FavoriteShopSearch($user_id, $shop_id)->first(); // お気に入り店舗の取得

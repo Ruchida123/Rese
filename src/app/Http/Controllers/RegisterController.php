@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Str;
+use Illuminate\Routing\Controller;
+use App\Http\Requests\RegisterRequest;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterViewResponse;
@@ -60,6 +61,8 @@ class RegisterController extends Controller
         }
 
         event(new Registered($user = $creator->create($request->all())));
+
+        $this->guard->login($user);
 
         return app(RegisterResponse::class);
     }

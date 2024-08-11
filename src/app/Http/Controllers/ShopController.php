@@ -16,7 +16,7 @@ class ShopController extends Controller
     {
         $favorites = []; // お気に入り情報
         if (Auth::check()) { // ログインしてたらお気に入り情報取得
-            $user_id = Auth::user()->id;
+            $user_id = Auth::id();
             $favorites = Favorite::UserFavoriteShopsSearch($user_id)->get();
         }
         // 飲食店一覧
@@ -80,7 +80,7 @@ class ShopController extends Controller
     {
         $favorites = []; // お気に入り情報
         if (Auth::check()) { // ログインしてたらお気に入り情報取得
-            $user_id = Auth::user()->id;
+            $user_id = Auth::id();
             $favorites = Favorite::UserFavoriteShopsSearch($user_id)->get();
         }
         // 飲食店一覧

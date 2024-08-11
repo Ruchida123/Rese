@@ -11,7 +11,7 @@ class ReservationController extends Controller
 {
     public function reserve(ReservationRequest $request)
     {
-        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $user_id = Auth::id(); // ログインユーザーのid取得
         $shop_id = $request->shop_id; // 店舗idの取得
         $prev_url = $request->prev_url;// 直前のURL
 
@@ -29,7 +29,7 @@ class ReservationController extends Controller
 
     public function delete(Request $request)
     {
-        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $user_id = Auth::id(); // ログインユーザーのid取得
         $reserve_id = $request->reserve_id; // 予約idの取得
 
         Reservation::find($reserve_id)->delete();
@@ -40,7 +40,7 @@ class ReservationController extends Controller
 
     public function update(ReservationRequest $request)
     {
-        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $user_id = Auth::id(); // ログインユーザーのid取得
         $reserve_id = $request->reserve_id; // 予約idの取得
 
         Reservation::ReserveShopsSearch($user_id, $reserve_id)->update([
@@ -55,7 +55,7 @@ class ReservationController extends Controller
 
     public function updateView(Request $request)
     {
-        $user_id = Auth::user()->id; // ログインユーザーのid取得
+        $user_id = Auth::id(); // ログインユーザーのid取得
         $reserve_id = $request->reserve_id; // 予約idの取得
         $prev_url = url()->previous();// 直前のURL
 
