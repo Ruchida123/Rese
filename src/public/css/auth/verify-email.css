@@ -1,0 +1,41 @@
+.container {
+    margin: 5% 20%;
+    padding: 15% 0;
+    background-color: #fff;
+}
+
+.card {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: x-large;
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card__button-submit {
+    margin-top: 10px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: #3366FF;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        margin: 5% 10%;
+    }
+
+    .card-header {
+        font-size: large;
+    }
+
+    .card-body {
+        font-size: medium;
+    }
+}

@@ -72,5 +72,13 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
+        RateLimiter::for('two-factor', function (Request $request) {
+            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
+
     }
 }
