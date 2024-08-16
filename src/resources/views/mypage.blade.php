@@ -56,6 +56,14 @@
           <input type="hidden" name="reserve_id" value="{{ $reserve['id'] }}">
         </form>
       </div>
+      <div class="review display-none">
+        <form class="review-form" action="/review/{{ $reserve['shop_id'] }}" method="get">
+          @csrf
+          <button class="review-form__button" type="submit">
+            評価
+          </button>
+        </form>
+      </div>
     </div>
     @endforeach
   </div>

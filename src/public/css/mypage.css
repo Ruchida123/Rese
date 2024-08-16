@@ -252,12 +252,14 @@
     background-color: #777 !important;
 }
 
-.update {
+.update,
+.review {
     text-align: right;
     padding: 0 15px 15px 0;
 }
 
-.update-form__button {
+.update-form__button,
+.review-form__button {
     padding: 3px 10px;
     color: #fff;
     background-color: #3366FF;

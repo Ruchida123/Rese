@@ -1,0 +1,104 @@
+.review-form {
+    margin: 10% 0;
+}
+
+@media screen and (min-width: 768px) {
+    .review-form__content {
+        margin: 0 30%;
+        padding-top: 5px;
+        border: 1px solid #fff;
+        background-color: #fff;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 3px 3px 3px #777;
+    }
+
+    .review-form__heading {
+        margin: 0 30%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .review-form__content {
+        margin: 0 15%;
+        padding-top: 5px;
+        border: 1px solid #fff;
+        background-color: #fff;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 3px 3px 3px #777;
+    }
+
+    .review-form__heading {
+        margin: 0 15%;
+    }
+}
+
+.review-form__title {
+    margin-top: 60px;
+    margin-bottom: 0;
+    padding: 10px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #3366FF;
+    border: 1px solid #3366FF;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 3px 3px 3px #777;
+}
+
+.form {
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+}
+
+.form__group {
+    margin-bottom: 5px;
+}
+
+.form__group-content {
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.form__group-content h4 {
+    width: 40%;
+    margin-top: 0;
+    text-align: left;
+}
+
+.form__button {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form__button-submit {
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: #3366FF;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.stars {
+    text-align: left;
+}
+
+.star,
+.star-radio,
+.star-label {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.comment {
+    height: 60px;
+}
+
+.form__error {
+    color: #ff0000;
+    text-align: left;
+    margin-bottom: 10px;
+}

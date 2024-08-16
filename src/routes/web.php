@@ -5,6 +5,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ShopReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::middleware('verified')->group(function () {
     Route::delete('/reserve', [ReservationController::class, 'delete']);
     Route::patch('/reserve', [ReservationController::class, 'update']);
     Route::get('/update_reserve', [ReservationController::class, 'updateView']);
+    Route::get('/review/{shop_id}', [ShopReviewController::class, 'index']);
+    Route::post('/review', [ShopReviewController::class, 'posts']);
 });
 
 Route::post('/favorite', [FavoriteController::class, 'favorite'])->middleware('auth')->middleware('verified');
