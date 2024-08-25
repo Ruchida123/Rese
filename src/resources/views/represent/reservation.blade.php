@@ -38,16 +38,16 @@
       @foreach ($reservations as $reservation)
       <tr class="represent-table__row">
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $reservation->user['name'] }}</p>
+          <p class="represent-form__item-p">{{ $reservation->user['name'] }}</p>
         </td>
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $reservation['date'] }}</p>
+          <p class="represent-form__item-p">{{ $reservation['date'] }}</p>
         </td>
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ substr($reservation['time'], 0, 5) }}</p>
+          <p class="represent-form__item-p">{{ substr($reservation['time'], 0, 5) }}</p>
         </td>
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $reservation['number'] }}</p>
+          <p class="represent-form__item-p">{{ $reservation['number'] }}</p>
         </td>
       </tr>
       @endforeach

@@ -54,13 +54,13 @@
       @foreach ($shops as $shop)
       <tr class="represent-table__row">
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $shop['name'] }}</p>
+          <p class="represent-form__item-p">{{ $shop['name'] }}</p>
         </td>
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $shop->region['name'] ?? '' }}</p>
+          <p class="represent-form__item-p">{{ $shop->region['name'] ?? '' }}</p>
         </td>
         <td class="represent-table__item">
-          <p class="represent-form__itme-p">{{ $shop->genre['name'] ?? '' }}</p>
+          <p class="represent-form__item-p">{{ $shop->genre['name'] ?? '' }}</p>
         </td>
         <td class="represent-table__item">
           <div class="form__button">
