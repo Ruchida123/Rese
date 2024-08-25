@@ -20,6 +20,7 @@ class CreateShopsTable extends Migration
             $table->foreignId('genre_id')->nullable()->constrained();
             $table->string('summary')->nullable();
             $table->string('image_url')->nullable();
+            $table->timestamps();
         });
     }
 

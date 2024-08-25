@@ -16,6 +16,7 @@ use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Contracts\LoginViewResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -106,5 +107,17 @@ class LoginController extends Controller
         }
 
         return app(LogoutResponse::class);
+    }
+
+    public function authenticated()
+    {
+        // 権限によってリダイレクト先を変更
+        if(Auth::user()->hasrole('admin')){
+            return redirect('/admin');
+        }elseif(Auth::user()->hasrole('represent')){
+            return redirect('/represent');
+        } else {
+            return redirect('/');
+        }
     }
 }

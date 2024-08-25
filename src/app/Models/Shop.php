@@ -9,6 +9,19 @@ class Shop extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'region_id',
+        'genre_id',
+        'summary',
+        'image_url',
+    ];
+
     public function region(){
         return $this->belongsTo('App\Models\Region');
     }

@@ -206,6 +206,8 @@
 
 .shop-content img {
     border-radius: 5px 5px 0 0;
+    height: -webkit-fill-available;
+    align-content: center;
 }
 
 .shop-content__detail {

@@ -40,12 +40,12 @@
     };
   @endphp
   <div class="shop-content">
-    <img src="{{ $shop['image_url'] }}" alt="image" />
+    <img src="{{ $shop['image_url'] }}" alt="No Image" />
     <div class="shop-content__name">
       {{ $shop['name'] }}
     </div>
     <div class="shop-content__tag">
-      #{{ $shop->region['name'] }} #{{ $shop->genre['name'] }}
+      #{{ $shop->region['name'] ?? '' }} #{{ $shop->genre['name'] ?? '' }}
     </div>
     <div class="shop-content__detail">
       <form class="detail-form" action="/detail/{{ $shop['id'] }}" method="get">

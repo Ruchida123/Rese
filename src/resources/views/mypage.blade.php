@@ -72,12 +72,12 @@
     <div class="shop">
       @foreach ($favorites as $favorite)
       <div class="shop-content">
-        <img src="{{ $favorite->shop['image_url'] }}" alt="image" />
+        <img src="{{ $favorite->shop['image_url'] }}" alt="No Image" />
         <div class="shop-content__name">
           {{ $favorite->shop['name'] }}
         </div>
         <div class="shop-content__tag">
-          #{{ $favorite->shop->region['name'] }} #{{ $favorite->shop->genre['name'] }}
+          #{{ $favorite->shop->region['name'] ?? '' }} #{{ $favorite->shop->genre['name'] ?? '' }}
         </div>
         <div class="shop-content__detail">
           <form class="detail-form" action="/detail/{{ $favorite->shop['id'] }}" method="get">

@@ -181,6 +181,7 @@
 
     .reserve__content tbody tr th {
         width: 50%;
+        white-space: nowrap;
     }
 
     .reserve__content tbody tr td {
@@ -190,6 +191,8 @@
 
 .shop-content img {
     border-radius: 5px 5px 0 0;
+    height: -webkit-fill-available;
+    align-content: center;
 }
 
 .shop-content__detail {

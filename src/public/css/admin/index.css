@@ -1,0 +1,167 @@
+.admin__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.section__title {
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    color: #3366FF;
+    font-family: serif;
+}
+
+.admin-table {
+    margin: 30px auto;
+    width: 90%;
+    text-align: left;
+}
+
+.admin-table__inner {
+    width: 100%;
+}
+
+.admin-table__row {
+    border: 1px solid #ddd;
+}
+
+.admin-table__header:first-of-type {
+    padding-left: 30px;
+}
+
+.admin-table__header {
+    padding: 10px 0;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3366FF;
+}
+
+.admin-table__header-span {
+    margin-right: 10%;
+}
+
+.admin-table__item:first-of-type {
+    padding-left: 30px;
+}
+
+.admin-table__item {
+    width: 18%;
+    white-space: nowrap;
+}
+
+.admin-form__itme-p {
+    text-align: left;
+}
+
+.mail-form__button {
+    width: 60px;
+    margin: 0 auto;
+}
+
+.mail-form__button-submit {
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 3px;
+    background: #3366FF 30%;
+    color: #fff;
+    border-color: #3366FF;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.admin-table__pagination {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: end;
+    border-width: 0;
+}
+
+.pagination li {
+    border: 1px solid #E0DFDE;
+    padding: 5px 10px;
+}
+
+.pagination li:first-of-type {
+    border-radius: 3px 0 0 3px;
+}
+
+.pagination li:last-of-type {
+    border-radius: 0 3px 3px 0;
+}
+
+.disabled,
+.pagination li a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .admin-table__inner {
+        font-size: small;
+    }
+
+    .search-form__item-keyword {
+        font-size: x-small;
+    }
+
+    .admin-table__header:first-of-type,
+    .admin-table__item:first-of-type {
+        padding-left: 10px;
+    }
+
+    .delete-form__button {
+        width: 50px;
+    }
+}
+
+/* 削除予定 */
+/* .search-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 90%;
+    text-align: center;
+}
+
+.search-form__item {
+    display: flex;
+    width: 100%;
+}
+
+.search-form__item input {
+    overflow: auto;
+}
+
+.search-form__item-keyword {
+    margin-right: 15px;
+    padding: 10px;
+    width: 90%;
+    height: 40px;
+    border: 1px solid #E3DED9;
+    border-radius: 3px;
+    background-color: #FBFBFB;
+}
+
+.search-form__button {
+    width: 20%;
+    display: flex;
+    white-space: nowrap;
+}
+
+.search-form__button-submit {
+    margin-right: 15px;
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    background: #3366FF;
+    color: #fff;
+    cursor: pointer;
+} */

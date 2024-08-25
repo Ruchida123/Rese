@@ -22,16 +22,27 @@
         <nav id="g-nav">
           <div id="g-nav-list">
             <ul>
-            <li><a href="/">Home</a></li>
             @if (Auth::check())
-            <form name="logout-form" action="/logout" method="post">
-              @csrf
-              <li><a onclick="document.forms[0].submit();">Logout</a></li>
-            </form>
-            <li><a href="/mypage">Mypage</a></li>
+              @hasrole('admin')
+              <li><a href="/admin">Home</a></li>
+              <li><a href="/admin/register">Registration</a></li>
+              @endhasrole
+              @hasrole('represent')
+              <li><a href="/represent">Home</a></li>
+              <li><a href="/represent/register">Registration</a></li>
+              @endhasrole
+              @hasrole('user')
+              <li><a href="/">Home</a></li>
+              <li><a href="/mypage">Mypage</a></li>
+              @endhasrole
+              <form name="logout-form" action="/logout" method="post">
+                @csrf
+                <li><a onclick="document.forms[0].submit();">Logout</a></li>
+              </form>
             @else
-            <li><a href="/register">Registration</a></li>
-            <li><a href="/login">Login</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/register">Registration</a></li>
+              <li><a href="/login">Login</a></li>
             @endif
             </ul>
           </div>

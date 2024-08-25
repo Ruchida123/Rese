@@ -19,6 +19,10 @@ class Reservation extends Model
         'number'
     ];
 
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+
     public function shop(){
         return $this->belongsTo('App\Models\Shop');
     }
@@ -34,6 +38,13 @@ class Reservation extends Model
     {
         if (!empty($user_id)) {
             $query->where('user_id', $user_id)->where('id', $reserve_id);
+        }
+    }
+
+    public function scopeShopSearch($query, $shop_id)
+    {
+        if (!empty($shop_id)) {
+            $query->where('shop_id', $shop_id);
         }
     }
 }

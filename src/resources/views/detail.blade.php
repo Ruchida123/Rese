@@ -40,12 +40,12 @@
         {{ $shop['name'] }}
       </span>
     </div>
-    <img src="{{ $shop['image_url'] }}" alt="image" />
+    <img src="{{ $shop['image_url'] }}" alt="No Image" />
     <div class="detail-content__tag">
-      #{{ $shop->region['name'] }} #{{ $shop->genre['name'] }}
+      #{{ $shop->region['name'] ?? '' }} #{{ $shop->genre['name'] ?? '' }}
     </div>
     <div class="detail-content__summary">
-      {{ $shop['summary'] }}
+      {{ $shop['summary'] ?? '' }}
     </div>
   </div>
   <form class="reserve-form" action="/reserve" method="post">

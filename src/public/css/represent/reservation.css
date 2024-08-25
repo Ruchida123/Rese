@@ -1,0 +1,154 @@
+.represent__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.section__title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.section__title h2 {
+    color: #3366FF;
+    font-family: serif;
+}
+
+.represent-table {
+    margin: 30px auto;
+    width: 90%;
+    text-align: left;
+}
+
+.title-button {
+    margin: 0 10px 0 -40px;
+    align-content: center;
+}
+
+.title-button__link {
+    text-decoration: none;
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #777;
+    font-weight: bold;
+    font-size: larger;
+    padding: 3px 6px;
+}
+
+.represent-table__inner {
+    width: 100%;
+}
+
+.represent-table__row {
+    border: 1px solid #ddd;
+}
+
+.represent-table__header:first-of-type {
+    padding-left: 30px;
+}
+
+.represent-table__header {
+    padding: 10px 0;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3366FF;
+    white-space: nowrap;
+}
+
+.represent-table__header-span {
+    margin-right: 10%;
+}
+
+.represent-table__item:first-of-type {
+    padding-left: 30px;
+}
+
+.represent-table__item {
+    width: 18%;
+    white-space: nowrap;
+}
+
+.represent-form__itme-p {
+    text-align: left;
+}
+
+.form__button {
+    display: flex;
+}
+
+.update-form,
+.reserve-form {
+    margin: 0 auto;
+}
+
+.update-form__button {
+    width: 60px;
+}
+
+.reserve-form__button {
+    width: 80px;
+}
+
+.update-form__button-submit,
+.reserve-form__button-submit {
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 3px;
+    background: #3366FF 30%;
+    color: #fff;
+    border-color: #3366FF;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.represent-table__pagination {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: end;
+    border-width: 0;
+}
+
+.pagination li {
+    border: 1px solid #E0DFDE;
+    padding: 5px 10px;
+}
+
+.pagination li:first-of-type {
+    border-radius: 3px 0 0 3px;
+}
+
+.pagination li:last-of-type {
+    border-radius: 0 3px 3px 0;
+}
+
+.disabled,
+.pagination li a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .represent-table__inner {
+        font-size: small;
+    }
+
+    .search-form__item-keyword {
+        font-size: x-small;
+    }
+
+    .represent-table__header:first-of-type,
+    .represent-table__item:first-of-type {
+        padding-left: 10px;
+    }
+
+    .delete-form__button {
+        width: 50px;
+    }
+}
