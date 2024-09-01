@@ -38,7 +38,7 @@ class ReservationController extends Controller
 
         Reservation::find($reserve_id)->delete();
 
-        // マイページ表示
+        // マイページ遷移
         return redirect('/mypage');
     }
 
@@ -53,7 +53,7 @@ class ReservationController extends Controller
             'number' => $request->number
         ]);
 
-        // マイページ表示
+        // マイページ遷移
         return redirect('/mypage');
     }
 

@@ -41,7 +41,7 @@ class AdminController extends Controller
             $user->assignRole('represent');
         }
 
-        // ページ表示
+        // ページ遷移
         return redirect('/admin');
     }
 }

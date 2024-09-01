@@ -47,4 +47,11 @@ class Reservation extends Model
             $query->where('shop_id', $shop_id);
         }
     }
+
+    public function scopeDateSearch($query, $date)
+    {
+        if (!empty($date)) {
+            $query->where('date', $date);
+        }
+    }
 }

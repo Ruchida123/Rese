@@ -3,7 +3,7 @@
 @section('css')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-<link rel="stylesheet" href="{{ asset('css/modal/favorite_error.css') }}">
+<link rel="stylesheet" href="{{ asset('css/modal/message.css') }}">
 @endsection
 
 @section('content')
@@ -62,6 +62,6 @@
   @endforeach
 </div>
 <!-- お気に入り登録エラーモーダル -->
-@include('modal.favorite_error')
+@include('modal.message')
 <script src="{{ asset('js/favorite.js') }}"></script>
 @endsection

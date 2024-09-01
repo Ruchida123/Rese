@@ -9,6 +9,7 @@ use App\Http\Controllers\ShopReviewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RepresentController;
+use App\Http\Controllers\MailSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:admin']], function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/register', [AdminController::class, 'register_view']);
     Route::post('/admin/register', [AdminController::class, 'register']);
+    Route::post('/mail', [MailSendController::class, 'send']);
 });
 Route::group(['middleware' => ['auth', 'verified', 'role:represent']], function () {
     Route::get('/represent', [RepresentController::class, 'index']);

@@ -3,7 +3,7 @@
 @section('css')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
-<link rel="stylesheet" href="{{ asset('css/modal/favorite_error.css') }}">
+<link rel="stylesheet" href="{{ asset('css/modal/message.css') }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 @endsection
 
@@ -92,7 +92,7 @@
   </div>
 </div>
 <!-- モーダル -->
-@include('modal.favorite_error')
+@include('modal.message')
 <script src="{{ asset('js/favorite.js') }}"></script>
 <script src="{{ asset('js/mypage.js') }}"></script>
 @endsection

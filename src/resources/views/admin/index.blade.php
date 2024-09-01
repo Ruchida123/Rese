@@ -3,6 +3,7 @@
 @section('css')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('css/admin/index.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/modal/message.css') }}">
 @endsection
 
 @section('content')
@@ -37,20 +38,20 @@
           <span class="admin-table__header-span">権限</span>
         </th>
         <th class="admin-table__header">
-          <span></span>
+          <span class="admin-table__header-span">お知らせ</span>
         </th>
       </tr>
 
       @foreach ($users as $user)
       <tr class="admin-table__row">
         <td class="admin-table__item">
-          <p class="admin-form__itme-p">{{ $user['name'] }}</p>
+          <p class="admin-form__item-p">{{ $user['name'] }}</p>
         </td>
         <td class="admin-table__item">
-          <p class="admin-form__itme-p">{{ $user['email'] }}</p>
+          <p class="admin-form__item-p">{{ $user['email'] }}</p>
         </td>
         <td class="admin-table__item">
-          <p class="admin-form__itme-p">
+          <p class="admin-form__item-p">
             @if ($user->hasRole('admin'))
               管理者
             @elseif ($user->hasRole('represent'))
@@ -68,9 +69,16 @@
         </td>
         <td class="admin-table__item">
           @if ($user->hasRole('user'))
-            <div class="mail-form__button">
-              <button class="mail-form__button-submit" >送信</button>
-            </div>
+          <div class="mail-form__button">
+            <button class="mail-form__button-submit" data-admin_name="{{ Auth::user()->name }}" data-admin_email="{{ Auth::user()->email }}" data-user_name="{{ $user->name }}" data-user_email="{{ $user->email }}">送信</button>
+          </div>
+          <!-- <form class="mail-form" action="/mail" method="post">
+            @csrf
+            <input type="hidden" name="admin_email" value="{{ Auth::user()->email }}">
+            <input type="hidden" name="admin_name" value="{{ Auth::user()->name }}">
+            <input type="hidden" name="user_email" value="{{ $user['email'] }}">
+            <input type="hidden" name="user_name" value="{{ $user['name'] }}">
+          </form> -->
           @endif
         </td>
       </tr>
@@ -78,4 +86,7 @@
     </table>
   </div>
 </div>
+<!-- モーダル -->
+@include('modal.message')
+<script src="{{ asset('js/admin.js') }}"></script>
 @endsection

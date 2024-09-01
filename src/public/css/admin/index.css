@@ -38,6 +38,10 @@
     background-color: #3366FF;
 }
 
+.admin-table__header:last-of-type {
+    text-align: center;
+}
+
 .admin-table__header-span {
     margin-right: 10%;
 }
@@ -51,7 +55,7 @@
     white-space: nowrap;
 }
 
-.admin-form__itme-p {
+.admin-form__item-p {
     text-align: left;
 }
 

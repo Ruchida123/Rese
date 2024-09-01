@@ -4,5 +4,6 @@
     "/js/favorite.js": "/js/favorite.js",
     "/js/detail.js": "/js/detail.js",
     "/js/mypage.js": "/js/mypage.js",
+    "/js/admin.js": "/js/admin.js",
     "/css/app.css": "/css/app.css"
 }
