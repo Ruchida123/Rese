@@ -187,11 +187,22 @@
     .reserve__content tbody tr td {
         width: 50%;
     }
+
+    .update-form__button,
+    .review-form__button,
+    .qr-code__button {
+        width: 46%;
+        white-space: nowrap;
+        font-size: x-small;
+    }
+
+    .qr-code {
+        margin-bottom: -26.5px !important;
+    }
 }
 
 .shop-content img {
     border-radius: 5px 5px 0 0;
-    height: -webkit-fill-available;
     align-content: center;
 }
 
@@ -199,6 +210,10 @@
     display: flex;
     justify-content: space-between;
     padding: 0 15px 15px 15px;
+}
+
+.shop-img {
+    height: 60%;
 }
 
 .favorite-img {
@@ -261,8 +276,13 @@
     padding: 0 15px 15px 0;
 }
 
+.qr-code {
+    margin-bottom: -29.5px;
+}
+
 .update-form__button,
-.review-form__button {
+.review-form__button,
+.qr-code__button {
     padding: 3px 10px;
     color: #fff;
     background-color: #3366FF;

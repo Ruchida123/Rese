@@ -206,7 +206,6 @@
 
 .shop-content img {
     border-radius: 5px 5px 0 0;
-    height: -webkit-fill-available;
     align-content: center;
 }
 
@@ -214,6 +213,10 @@
     display: flex;
     justify-content: space-between;
     padding: 0 15px 15px 15px;
+}
+
+.shop-img {
+    height: 60%;
 }
 
 .favorite-img {

@@ -10784,6 +10784,32 @@ $(function () {
       var review_btn = $('.review-form__button');
       review.eq(i).removeClass('display-none');
       review_btn.eq(i).addClass('grayed');
+
+      // QRコードボタンのグレーアウト
+      $('.qr-code__button').eq(i).addClass('grayed');
+    }
+  });
+  var qr_code = $('.qr-code__button'),
+    close = $('.qr-close'),
+    container = $('.qr-container');
+
+  // QRコードクリック時
+  qr_code.on('click', function () {
+    var index = qr_code.index($(this));
+    // QRコードを表示する
+    container.eq(index).addClass('active');
+    return false;
+  });
+
+  //閉じるボタンをクリックしたらモーダルを閉じる
+  close.on('click', function () {
+    container.removeClass('active');
+  });
+
+  //モーダルの外側をクリックしたらモーダルを閉じる
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.qr-body').length) {
+      container.removeClass('active');
     }
   });
 });

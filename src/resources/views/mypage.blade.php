@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 <link rel="stylesheet" href="{{ asset('css/modal/message.css') }}">
+<link rel="stylesheet" href="{{ asset('css/modal/qr_code.css') }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 @endsection
 
@@ -47,6 +48,11 @@
           </tr>
         </table>
       </div>
+      <div class="qr-code">
+        <button class="qr-code__button" type="submit">
+          QRコード
+        </button>
+      </div>
       <div class="update">
         <form class="update-form" action="/update_reserve" method="get">
           @csrf
@@ -65,6 +71,8 @@
         </form>
       </div>
     </div>
+    <!-- QRコード -->
+    @include('modal.qr_code')
     @endforeach
   </div>
   <div class="favorite">
@@ -72,7 +80,7 @@
     <div class="shop">
       @foreach ($favorites as $favorite)
       <div class="shop-content">
-        <img src="{{ $favorite->shop['image_url'] }}" alt="No Image" />
+        <img class="shop-img" src="{{ $favorite->shop['image_url'] }}" alt="No Image" />
         <div class="shop-content__name">
           {{ $favorite->shop['name'] }}
         </div>

@@ -40,7 +40,7 @@
     };
   @endphp
   <div class="shop-content">
-    <img src="{{ $shop['image_url'] }}" alt="No Image" />
+    <img class="shop-img" src="{{ $shop['image_url'] }}" alt="No Image" />
     <div class="shop-content__name">
       {{ $shop['name'] }}
     </div>
