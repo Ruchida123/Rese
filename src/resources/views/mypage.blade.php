@@ -48,11 +48,6 @@
           </tr>
         </table>
       </div>
-      <div class="qr-code">
-        <button class="qr-code__button" type="submit">
-          QRコード
-        </button>
-      </div>
       <div class="update">
         <form class="update-form" action="/update_reserve" method="get">
           @csrf
@@ -68,6 +63,13 @@
           <button class="review-form__button" type="submit">
             評価
           </button>
+        </form>
+      </div>
+      <div class="addition">
+        <button class="qr-code__button">QRコード</button>
+        <form class="purchase-form" action="/checkout-payment" method="get">
+          @csrf
+          <button class="purchase__button">決済</button>
         </form>
       </div>
     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RepresentController;
 use App\Http\Controllers\MailSendController;
+use App\Http\Controllers\StripePaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/update_reserve', [ReservationController::class, 'updateView']);
     Route::get('/review/{shop_id}', [ShopReviewController::class, 'index']);
     Route::post('/review', [ShopReviewController::class, 'posts']);
+    Route::get('success', function () {
+        return view('success');
+    })->name('success');
+    Route::get('cancel', function () {
+        return view('cancel');
+    })->name('cancel');
+    Route::get('/checkout-payment', [StripePaymentsController::class, 'checkout']); // Stripeフォームへ遷移する処理
+
 });
 
 // 管理画面用

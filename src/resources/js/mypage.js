@@ -16,6 +16,8 @@ $(function () {
             // 変更ボタンを非表示にする
             var update = $('.update');
             update.eq(i).addClass('display-none');
+            // QRコードボタンと決済ボタンを非表示にする
+            $('.addition').eq(i).addClass('display-none');
 
             // 評価ボタンを表示させる
             var review = $('.review');
@@ -23,8 +25,6 @@ $(function () {
             review.eq(i).removeClass('display-none');
             review_btn.eq(i).addClass('grayed');
 
-            // QRコードボタンのグレーアウト
-            $('.qr-code__button').eq(i).addClass('grayed');
         }
     });
 
