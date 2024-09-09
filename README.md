@@ -35,7 +35,7 @@
 - 店舗代表者用飲食店情報管理
 - メール認証機能
 - お知らせメール送信機能
-- 予約確認のリマインダー機能
+- 予約確認のリマインダー機能（予約当日の9時に送信）
 - 予約情報QRコード表示
 
 ## 使用技術(実行環境)
@@ -63,11 +63,18 @@ Dockerビルド
 Laravel環境構築
 1. docker-compose exec php bash
 2. composer install
-3. .env.exampleファイルから.envを作成し、環境変数を変更
+3. .env.exampleファイルから.envを作成し、環境変数を変更 ・・・①
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed
-7. php artisan schedule:work（リマインダー機能確認用）
+7. php artisan storage:link
+8. php artisan schedule:work（リマインダー機能確認用）
+
+① 環境変数の設定（DB関連は割愛）
+1. 「MAIL_FROM_ADDRESS」に任意のメールアドレスを設定（例：sample@example.com）
+2. 「STRIPE_KEY」にStripeのAPIキーの公開可能キーを設定
+3. 「STRIPE_SECRET」にStripeのAPIキーのシークレットキーを設定
+4. 「CASHIER_CURRENCY」に「jpy」を設定
 
 ## アカウントの種類（テストユーザー）
 | 権限 | メールアドレス | パスワード |

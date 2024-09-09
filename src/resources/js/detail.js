@@ -9,13 +9,14 @@ $(function () {
     $(document).on('change', 'input[class="reserve__date-item"]', function() {
         var val = $(this).val();
         changeText(date, val);
-        changeTimeSelectValue(val)
+        changeTimeSelectValue(val);
     })
 
     var time = $(".reserve__content-time").children('td');
     var timeValue = $('select[class="reserve__time-item"]').val()
     // 予約時間の初期表示処理
     if (timeValue !== '') {
+        changeTimeSelectValue(dateValue, timeValue);
         changeText(time, timeValue);
     }
     // 予約時間が変更された場合の処理
@@ -55,7 +56,7 @@ $(function () {
     $('#reserveDate').attr('min', minDate);
 
     // 予約時間の選択項目を変更する
-    function changeTimeSelectValue(val) {
+    function changeTimeSelectValue(val, timeVal) {
         var dtToday = new Date();
         var dtSelectVal = new Date(val);
         // 予約時間テーブル
@@ -100,7 +101,12 @@ $(function () {
         // 予約時間テーブルをセット
         time_table.forEach( function(table)
         {
-            $('select[class="reserve__time-item"]').append($("<option>").attr({ value: table.value}).text(table.label));
+            // 初期値選択
+            if (table.value == timeVal) {
+                $('select[class="reserve__time-item"]').append($("<option>").attr({ value: table.value }).prop('selected', true).text(table.label));
+            } else {
+                $('select[class="reserve__time-item"]').append($("<option>").attr({ value: table.value }).text(table.label));
+            };
         });
     }
 
