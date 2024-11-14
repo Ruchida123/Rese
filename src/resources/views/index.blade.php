@@ -9,6 +9,14 @@
 @section('content')
 <div class="search">
   <div class="search-item">
+    <select class="search-item__sort" name="sort">
+      <option value="0" selected hidden>並び替え：評価高/低</option>
+      <option value="1">並び替え：ランダム</option>
+      <option value="2">並び替え：評価が高い順</option>
+      <option value="3">並び替え：評価が低い順</option>
+    </select>
+  </div>
+  <div class="search-item">
     <select class="search-item__region region-width" name="region">
       <option value="">All area</option>
       @foreach ($regions as $region)

@@ -27,6 +27,7 @@ Route::get('/redirects', [LoginController::class, 'authenticated']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/search', [ShopController::class, 'search']);
+Route::get('/sort', [ShopController::class, 'sort']);
 Route::get('/thanks', [RegisterController::class, 'thanks']);
 Route::post('/reserve', [ReservationController::class, 'reserve']);
 

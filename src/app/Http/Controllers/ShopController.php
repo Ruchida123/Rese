@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
+use App\Services\ShopService;
 use Auth;
 
 class ShopController extends Controller
@@ -84,7 +85,39 @@ class ShopController extends Controller
             $favorites = Favorite::UserFavoriteShopsSearch($user_id)->get();
         }
         // 飲食店一覧
-        $shops = Shop::with('region', 'genre')->RegionSearch($request->region)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
+        $shopCollections = Shop::with('region', 'genre', 'shopReview')->RegionSearch($request->region)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
+
+        // ShopServiceをインスタンス化
+        $service = new ShopService;
+        // 飲食店一覧を並び替え
+        $shops = $service::sortShops($shopCollections, $request->sort);
+
+        // 地域一覧
+        $regions = Region::all();
+        // ジャンル一覧
+        $genres = Genre::all();
+
+        // 飲食店一覧ページ表示
+        return view('index', compact('shops', 'regions', 'genres', 'favorites'));
+    }
+
+    // 並べ替え
+    public function sort(Request $request)
+    {
+        $favorites = []; // お気に入り情報
+        if (Auth::check()) { // ログインしてたらお気に入り情報取得
+            $user_id = Auth::id();
+            $favorites = Favorite::UserFavoriteShopsSearch($user_id)->get();
+        }
+
+        // 飲食店一覧
+        $shopCollections = Shop::with('region', 'genre', 'shopReview')->RegionSearch($request->region)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
+
+        // ShopServiceをインスタンス化
+        $service = new ShopService;
+        // 飲食店一覧を並び替え
+        $shops = $service::sortShops($shopCollections, $request->sort);
+
         // 地域一覧
         $regions = Region::all();
         // ジャンル一覧

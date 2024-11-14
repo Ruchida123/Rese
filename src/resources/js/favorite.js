@@ -4,8 +4,7 @@ $(function () {
     container = $('.modal-container'),
     text = $('.modal-content').children('p');
 
-  let like = $('.favorite-img'); //favorite-imgのついたimgタグを取得し代入。
-  like.on('click', function () { //onはイベントハンドラー
+  $(document).on('click', '.favorite-img', function () { //onはイベントハンドラー
     let $this = $(this); //this=イベントの発火した要素＝imgタグを代入
     shopId = $this.data('shop_id'); //imgタグに仕込んだdata-shop_idの値を取得
     //ajax処理スタート

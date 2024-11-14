@@ -30,6 +30,10 @@ class Shop extends Model
         return $this->belongsTo('App\Models\Genre');
     }
 
+    public function shopReview(){
+        return $this->hasMany('App\Models\ShopReview');
+    }
+
     public function scopeRegionSearch($query, $region_id)
     {
         if (!empty($region_id)) {
