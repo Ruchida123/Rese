@@ -10856,10 +10856,11 @@ function sortShop() {
 
 // サーバーに送信するデータを取得
 function getFormData() {
+  var _$$val;
   var region = $('select[name="region"]').val();
   var genre = $('select[name="genre"]').val();
   var keyword = $('input[name="keyword"]').val();
-  var sort = $('select[name="sort"]').val();
+  var sort = (_$$val = $('select[name="sort"]').val()) !== null && _$$val !== void 0 ? _$$val : '0';
   return {
     'region': region,
     'genre': genre,

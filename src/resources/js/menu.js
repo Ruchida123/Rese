@@ -89,7 +89,7 @@ function getFormData() {
     let region = $('select[name="region"]').val();
     let genre = $('select[name="genre"]').val();
     let keyword = $('input[name="keyword"]').val();
-    let sort = $('select[name="sort"]').val();
+    let sort = $('select[name="sort"]').val() ?? '0';
 
     return {
         'region': region,
