@@ -116,7 +116,16 @@ class ShopReviewController extends Controller
         $user_id = Auth::id();
         $shop_id = $request->shop_id;
 
-        ShopReview::where('user_id', $user_id)->where('shop_id', $shop_id)->delete();
+        // 削除対象
+        $shopReview = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
+
+        if (isset($shopReview->image_url)) {
+            // storageから画像を削除
+            $search = 'storage/';
+            Storage::disk('public')->delete(mb_substr($shopReview->image_url, strlen($search), NULL, "UTF-8"));
+        }
+
+        $shopReview->delete();
 
         // 詳細画面に遷移
         return redirect('/detail/' . $shop_id);

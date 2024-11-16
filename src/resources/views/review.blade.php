@@ -17,7 +17,7 @@
   <div class="review-detail">
     <p class="review-detail__title">今回のご利用はいかがでしたか？</p>
     <div class="review-detail__heading">
-      <h3  class="review-detail__name">{{ $shop['name'] }}</h3>
+      <p  class="review-detail__name">{{ $shop['name'] }}</p>
       <img class="shop-image" src="{{ $shop['image_url'] }}" >
     </div>
   </div>
