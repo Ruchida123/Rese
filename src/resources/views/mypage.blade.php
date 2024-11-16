@@ -58,7 +58,7 @@
         </form>
       </div>
       <div class="review display-none">
-        <form class="review-form" action="/review/{{ $reserve['shop_id'] }}" method="get">
+        <form class="review-form" action="/review/{{ $reserve['shop_id'] }}/1" method="get">
           @csrf
           <button class="review-form__button" type="submit">
             評価

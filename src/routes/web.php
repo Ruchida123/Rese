@@ -27,18 +27,20 @@ Route::get('/redirects', [LoginController::class, 'authenticated']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/search', [ShopController::class, 'search']);
-Route::get('/sort', [ShopController::class, 'sort']);
 Route::get('/thanks', [RegisterController::class, 'thanks']);
 Route::post('/reserve', [ReservationController::class, 'reserve']);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
+    Route::get('/sort', [ShopController::class, 'sort']);
     Route::delete('/reserve', [ReservationController::class, 'delete']);
     Route::patch('/reserve', [ReservationController::class, 'update']);
     Route::get('/update_reserve', [ReservationController::class, 'updateView']);
-    Route::get('/review/{shop_id}', [ShopReviewController::class, 'index']);
+    Route::get('/review/{shop_id}/{prev_id}', [ShopReviewController::class, 'index']);
+    Route::get('/review/delete/{shop_id}/{prev_id}', [ShopReviewController::class, 'deleteView']);
     Route::post('/review', [ShopReviewController::class, 'posts']);
+    Route::delete('/review', [ShopReviewController::class, 'delete']);
     Route::get('success', function () {
         return view('success');
     })->name('success');

@@ -10757,58 +10757,49 @@ return jQuery;
 /************************************************************************/
 var __webpack_exports__ = {};
 /*!********************************!*\
-  !*** ./resources/js/mypage.js ***!
+  !*** ./resources/js/review.js ***!
   \********************************/
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 $(function () {
-  // 予約日時が現在日時を過ぎていた場合グレーアウトする
-  $('.reserve__content table').each(function (i, e) {
-    var date = $(this).find('.reserve__content-date td').text();
-    var time = $(this).find('.reserve__content-time td').text();
-    var now = new Date(); //現在日時
-    var target = new Date(date + ' ' + time); //予約日時
-
-    if (target <= now) {
-      var frame = $('.reserve__frame');
-      var content = $('.reserve__content');
-      frame.eq(i).addClass('grayed');
-      content.eq(i).addClass('grayed');
-
-      // 変更ボタンを非表示にする
-      var update = $('.update');
-      update.eq(i).addClass('display-none');
-      // QRコードボタンと決済ボタンを非表示にする
-      $('.addition').eq(i).addClass('display-none');
-
-      // 評価ボタンを表示させる
-      var review = $('.review');
-      var review_btn = $('.review-form__button');
-      review.eq(i).removeClass('display-none');
-      review_btn.eq(i).addClass('grayed');
-    }
-  });
-  var qr_code = $('.qr-code__button'),
-    close = $('.qr-close'),
-    container = $('.qr-container');
-
-  // QRコードクリック時
-  qr_code.on('click', function () {
-    var index = qr_code.index($(this));
-    // QRコードを表示する
-    container.eq(index).addClass('active');
-    return false;
+  // 文字数カウント
+  $('[name="comment"]').on('keyup', function (e) {
+    $("#commentCnt").html($(this).val().length + "/400（最高文字数）");
   });
 
-  //閉じるボタンをクリックしたらモーダルを閉じる
-  close.on('click', function () {
-    container.removeClass('active');
+  // ドラッグオーバー時の処理
+  $(document).on('dragover', '.drop-area', function (e) {
+    e.preventDefault();
+    $(this).addClass('drag-over');
   });
 
-  //モーダルの外側をクリックしたらモーダルを閉じる
-  $(document).on('click', function (e) {
-    if (!$(e.target).closest('.qr-body').length) {
-      container.removeClass('active');
-    }
+  // ドラッグアウト時の処理
+  $(document).on('dragleave', '.drop-area', function (e) {
+    e.preventDefault();
+    $(this).removeClass('drag-over');
+  });
+
+  // ドロップ時の処理
+  $(document).on('drop', '.drop-area', function (e) {
+    $(this).removeClass('drag-over');
+    $(this).find('.uploader')[0].files = e.originalEvent.dataTransfer.files;
+    $(this).find('.uploader').trigger('change');
+  });
+
+  // ドロップされた画像をプレビューエリアに表示
+  $(document).on('change', '.drop-area .uploader', function (e) {
+    var area = $(this);
+    var fileReader = new FileReader();
+    fileReader.onload = function () {
+      var imgTag = "<img src='".concat(fileReader.result, "'>");
+      area.closest(".drop-area").find(".preview-area").html(imgTag);
+    };
+    fileReader.readAsDataURL(e.target.files[0]);
+  });
+
+  // ドロップエリア以外のドロップ禁止
+  $(document).on('dragenter dragover drop', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
   });
 });
 /******/ })()

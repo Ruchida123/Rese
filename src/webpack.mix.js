@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/detail.js', 'public/js')
     .js('resources/js/mypage.js', 'public/js')
     .js('resources/js/admin.js', 'public/js')
+    .js('resources/js/review.js', 'public/js')
     .autoload({
         "jquery": [ '$', 'window.jQuery' ],
     })

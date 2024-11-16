@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
+use App\Models\ShopReview;
 use App\Services\ShopService;
 use Auth;
 
@@ -33,6 +34,12 @@ class ShopController extends Controller
 
     public function detail(Request $request, $shop_id)
     {
+        $review = []; // 口コミ情報
+        if (Auth::check()) { // ログインしてたら口コミ情報取得
+            $user_id = Auth::id();
+            $review = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
+        }
+
         // 飲食店
         $shop = Shop::with('region', 'genre')->find($shop_id);
 
@@ -61,7 +68,7 @@ class ShopController extends Controller
         }
 
         // 飲食店詳細ページ表示
-        return view('detail', compact('shop', 'times', 'numbers', 'prev_url'));
+        return view('detail', compact('shop', 'times', 'numbers', 'prev_url', 'review'));
     }
 
     public function mypage()

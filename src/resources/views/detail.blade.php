@@ -47,6 +47,34 @@
     <div class="detail-content__summary">
       {{ $shop['summary'] ?? '' }}
     </div>
+    @if (isset($review))
+      <div class="all-reviews">
+        <button type="button">全ての口コミ情報</button>
+      </div>
+      <div class="review">
+        <div class="review-links">
+          <a href="/review/{{ $shop['id'] }}/2">口コミを編集</a>
+          <a href="/review/delete/{{ $shop['id'] }}/2">口コミを削除</a>
+        </div>
+        <div class="review-star">
+          @for ($i = 1; $i <= 5; $i++)
+            @if ($i <= $review['evaluate'])
+              <label class="form-rating__label" for="star{{ $i }}"><i class="fa-solid fa-star fa-star-color"></i></label>
+            @else
+              <label class="form-rating__label" for="star{{ $i }}"><i class="fa-solid fa-star"></i></label>
+            @endif
+          @endfor
+        </div>
+        <div class="review-comment">
+          <span>{{ $review['comment'] }}</span>
+        </div>
+        @if (isset($review['image_url']))
+          <div class="review-image">
+            <img src="{{ asset($review['image_url']) }}" alt="No Image">
+          </div>
+        @endif
+      </div>
+    @endif
   </div>
   <form class="reserve-form" action="/reserve" method="post">
     @csrf
@@ -107,5 +135,10 @@
     </div>
   </form>
 </div>
+@if (!isset($review))
+  <div class="review-link">
+    <a href="/review/{{ $shop['id'] }}/2">口コミを投稿する</a>
+  </div>
+@endif
 <script src="{{ asset('js/detail.js') }}"></script>
 @endsection

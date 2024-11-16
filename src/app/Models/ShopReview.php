@@ -19,6 +19,7 @@ class ShopReview extends Model
         'shop_id',
         'evaluate',
         'comment',
+        'image_url'
     ];
 
     public function scopeUserShopReviewSearch($query, $user_id, $shop_id)

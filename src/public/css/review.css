@@ -1,53 +1,78 @@
-.review-form {
-    margin: 10% 0;
+.review {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20px 20px 20px;
+}
+
+.form-rating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.form-rating__input {
+    display: none;
+}
+.form-rating__label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+.form-rating__label:hover,
+.form-rating__label:hover ~ .form-rating__label,
+.form-rating__input:checked ~ .form-rating__label {
+    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+    color: #5c82f3;
 }
 
 @media screen and (min-width: 768px) {
-    .review-form__content {
-        margin: 0 30%;
-        padding-top: 5px;
-        border: 1px solid #fff;
-        background-color: #fff;
-        border-radius: 0 0 5px 5px;
-        box-shadow: 3px 3px 3px #777;
+    .review-detail {
+        width: 50%;
+        text-align: center;
     }
 
-    .review-form__heading {
-        margin: 0 30%;
+    .review-form__content {
+        border-left: 1px solid gray;
+        padding-left: 10%;
+    }
+
+    .review-detail__title {
+        font-size: xx-large;
+        margin: 10% 10%;
+    }
+
+    .review-form {
+        width: 50%;
+    }
+
+    .button-margin {
+        margin-left: -20%;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .review-form__content {
-        margin: 0 15%;
-        padding-top: 5px;
-        border: 1px solid #fff;
-        background-color: #fff;
-        border-radius: 0 0 5px 5px;
-        box-shadow: 3px 3px 3px #777;
-    }
-
-    .review-form__heading {
-        margin: 0 15%;
+    .review {
+        justify-content: center;
+        text-align: center;
     }
 }
 
-.review-form__title {
-    margin-top: 60px;
+.review-detail__name {
     margin-bottom: 0;
     padding: 10px;
     font-weight: 500;
-    color: #fff;
-    background-color: #3366FF;
-    border: 1px solid #3366FF;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 3px 3px 3px #777;
 }
 
-.form {
-    margin: 10px auto;
-    width: 90%;
-    text-align: center;
+.shop-image {
+    width: 40%;
+}
+
+.review-form__content {
+    padding-top: 5px;
 }
 
 .form__group {
@@ -55,12 +80,10 @@
 }
 
 .form__group-content {
-    display: flex;
     margin-bottom: 10%;
 }
 
 .form__group-content h4 {
-    width: 40%;
     margin-top: 0;
     text-align: left;
 }
@@ -68,15 +91,15 @@
 .form__button {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .form__button-submit {
-    width: 80px;
-    height: 30px;
+    width: 200px;
+    height: 40px;
     border: none;
-    border-radius: 3px;
-    background: #3366FF;
+    border-radius: 50px;
+    background: #3366ff;
     color: #fff;
     cursor: pointer;
     white-space: nowrap;
@@ -94,11 +117,57 @@
 }
 
 .comment {
-    height: 60px;
+    width: 100%;
+    height: 100px;
+    background: none;
+}
+
+.comment-cnt {
+    font-size: smaller;
+    text-align: right;
+    margin: 0;
 }
 
 .form__error {
     color: #ff0000;
     text-align: left;
     margin-bottom: 10px;
+}
+
+.drop-area {
+    border: 3px dashed #c8c8c8;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+}
+.drop-area label {
+    width: 100%;
+    display: inline-block;
+}
+.drop-area label:hover {
+    cursor: pointer;
+}
+.drop-area label input {
+    display: none;
+}
+.drop-area label svg {
+    width: 50px;
+    fill: currentColor;
+    color: #909090;
+}
+.drop-area label .preview-area {
+    width: 75%;
+    margin: 0 auto;
+    height: 100px;
+}
+.drop-area label .preview-area img {
+    height: 100%;
+    max-width: 100%;
+    width: auto;
+}
+
+.drag-over {
+    border: 2px solid #16a5bf;
+    background: rgba(22, 165, 191, 0.6);
 }

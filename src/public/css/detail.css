@@ -1,3 +1,4 @@
+/* メッセージエリア */
 .detail__alert--danger {
     margin: 10px 0;
     padding: 10px 30px;
@@ -10,6 +11,7 @@
     margin: 0;
 }
 
+/* 店舗詳細情報エリア */
 .detail-content {
     display: flex;
     flex-direction: column;
@@ -51,8 +53,9 @@
     font-size: small;
 }
 
+/* 予約情報エリア */
 .detail-reserve {
-    background-color: #3366FF;
+    background-color: #3366ff;
     border-radius: 5px 5px 0 0;
     box-shadow: 2px 2px 2px #777;
 }
@@ -104,7 +107,7 @@
     padding: 15px;
     text-align: left;
     color: #fff;
-    background-color: #6495ED;
+    background-color: #6495ed;
     border-radius: 5px;
 }
 
@@ -117,19 +120,74 @@
     width: 100%;
     height: 100%;
     color: #fff;
-    background-color: #0033FF;
+    background-color: #0033ff;
     border: none;
     border-radius: 0 0 5px 5px;
     box-shadow: 2px 2px 2px #777;
     cursor: pointer;
 }
 
+/* レビュー情報エリア */
+.review-link {
+    margin: 0 20px 40px 20px;
+}
+
+.review-link a {
+    color: black;
+}
+
+.all-reviews {
+    width: 100%;
+    margin: 15px auto;
+}
+
+.all-reviews button {
+    width: 100%;
+    height: 40px;
+    color: #e7e5e5;
+    background-color: #3c61f3;
+    border: none;
+    cursor: pointer;
+}
+
+.review {
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+}
+
+.review-links {
+    font-size: small;
+    text-align: right;
+}
+
+.review-star {
+    margin-top: 15px;
+}
+
+.review-comment {
+    margin-bottom: 15px;
+}
+
+.review-image img {
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+.form-rating__label {
+    color: #ccc;
+    font-size: 24px;
+    padding-right: 5px;
+}
+
+.fa-star-color {
+    color: #5c82f3;
+}
 
 @media screen and (min-width: 768px) {
     .detail {
         display: flex;
         flex-wrap: wrap;
-        margin: 0 20px 40px 20px;
+        margin: 0 20px 20px 20px;
     }
 
     .detail-content__media {
@@ -157,7 +215,7 @@
 }
 @media screen and (max-width: 767px) {
     .detail {
-        margin: 0 20px 40px 20px;
+        margin: 0 20px 20px 20px;
     }
 
     .detail-content__media {
