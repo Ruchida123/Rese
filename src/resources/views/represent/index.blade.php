@@ -91,6 +91,12 @@
               </div>
               <input type="hidden" name="id" value="{{ $shop['id'] }}">
             </form>
+            <form class="review-form" action="/allReview/{{ $shop['id'] }}" method="get">
+              @csrf
+              <div class="review-form__button">
+                <button class="review-form__button-submit" >口コミ情報</button>
+              </div>
+            </form>
           </div>
         </td>
       </tr>

@@ -49,6 +49,19 @@
     white-space: nowrap;
 }
 
+.export__button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    width: 130px;
+    border-radius: 3px;
+    background: #3366ff 30%;
+    color: #fff;
+    border-color: #3366ff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* 一覧エリア */
 .represent-table {
     margin: 30px auto;
     width: 90%;
@@ -98,7 +111,8 @@
 }
 
 .update-form,
-.reserve-form {
+.reserve-form,
+.review-form {
     margin: 0 auto;
 }
 
@@ -106,12 +120,14 @@
     width: 60px;
 }
 
-.reserve-form__button {
-    width: 80px;
+.reserve-form__button,
+.review-form__button {
+    width: 90px;
 }
 
 .update-form__button-submit,
-.reserve-form__button-submit {
+.reserve-form__button-submit,
+.review-form__button-submit {
     padding: 5px 10px;
     width: 100%;
     border-radius: 3px;
@@ -169,4 +185,3 @@
         width: 50px;
     }
 }
-

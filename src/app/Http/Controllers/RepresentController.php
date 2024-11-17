@@ -7,15 +7,17 @@ use App\Models\Region;
 use App\Models\Genre;
 use App\Models\Shop;
 use App\Models\Reservation;
+use App\Models\ShopReview;
 use App\Http\Requests\RepresentRequest;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Auth;
 
 class RepresentController extends Controller
 {
     public function index()
     {
         // 店舗情報を取得
-        $shops = Shop::with('region', 'genre')->orderBy('updated_at', 'desc')->Paginate(5);
+        $shops = Shop::with('region', 'genre')->orderBy('updated_at', 'desc')->Paginate(10);
 
         // ページ表示
         return view('represent.index', compact('shops'));
@@ -184,4 +186,17 @@ class RepresentController extends Controller
 
         return $response;
     }
+
+    public function review_all($shop_id)
+    {
+        $user_id = Auth::id();
+        $shop = Shop::find($shop_id);
+
+        // レビュー情報
+        $reviews = ShopReview::where('shop_id', $shop_id)->Paginate(10);
+
+        // 評価ページ表示
+        return view('review_all', compact('shop', 'reviews', 'user_id'));
+    }
+
 }

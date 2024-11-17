@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:admin']], function () {
     Route::post('/import', [RepresentController::class, 'import']);
     Route::post('/export', [RepresentController::class, 'export']);
 });
+
 Route::group(['middleware' => ['auth', 'verified', 'role:admin|represent']], function () {
     Route::get('/represent', [RepresentController::class, 'index']);
     Route::get('/represent/register', [RepresentController::class, 'register_view']);
@@ -67,4 +68,8 @@ Route::group(['middleware' => ['auth', 'verified', 'role:admin|represent']], fun
     Route::get('/represent/update', [RepresentController::class, 'update_view']);
     Route::post('/represent/update', [RepresentController::class, 'update']);
     Route::get('/represent/reserve', [RepresentController::class, 'reserve_view']);
+});
+
+Route::group(['middleware' => ['auth', 'verified', 'role:admin|user']], function () {
+    Route::get('/allReview/{shop_id}', [RepresentController::class, 'review_all']);
 });

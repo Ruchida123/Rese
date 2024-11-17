@@ -48,9 +48,12 @@
       {{ $shop['summary'] ?? '' }}
     </div>
     @if (isset($review))
-      <div class="all-reviews">
-        <button type="button">全ての口コミ情報</button>
-      </div>
+      <form action="/allReview/{{ $shop['id'] }}" method="get">
+        @csrf
+        <div class="all-reviews">
+          <button type="submit">全ての口コミ情報</button>
+        </div>
+      </form>
       <div class="review">
         <div class="review-links">
           <a href="/review/{{ $shop['id'] }}/2">口コミを編集</a>

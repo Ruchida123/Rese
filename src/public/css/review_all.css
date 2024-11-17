@@ -1,0 +1,86 @@
+.review__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.section__title {
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    color: #3366ff;
+    font-family: serif;
+}
+
+/* 一覧エリア */
+.review-table {
+    margin: 30px auto;
+    width: 90%;
+    text-align: left;
+}
+
+.review-table__pagination {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: end;
+    border-width: 0;
+}
+
+.pagination li {
+    border: 1px solid #e0dfde;
+    padding: 5px 10px;
+}
+
+.pagination li:first-of-type {
+    border-radius: 3px 0 0 3px;
+}
+
+.pagination li:last-of-type {
+    border-radius: 0 3px 3px 0;
+}
+
+.disabled,
+.pagination li a {
+    text-decoration: none;
+}
+
+/* レビューエリア */
+.review {
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+}
+
+.review-links {
+    font-size: small;
+    text-align: right;
+}
+
+.review-star {
+    margin-top: 15px;
+}
+
+.review-comment {
+    margin-bottom: 15px;
+}
+
+.review-image img {
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+.form-rating__label {
+    color: #ccc;
+    font-size: 24px;
+    padding-right: 5px;
+}
+
+.fa-star-color {
+    color: #5c82f3;
+}
+
+@media screen and (max-width: 767px) {
+}
