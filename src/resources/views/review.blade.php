@@ -16,9 +16,27 @@
 <div class="review">
   <div class="review-detail">
     <p class="review-detail__title">今回のご利用はいかがでしたか？</p>
-    <div class="review-detail__heading">
-      <p  class="review-detail__name">{{ $shop['name'] }}</p>
-      <img class="shop-image" src="{{ $shop['image_url'] }}" >
+    <div class="review-detail__content">
+      <div class="shop-content">
+        <img class="shop-img" src="{{ $shop['image_url'] }}" alt="No Image" />
+        <div class="shop-content__name">
+          {{ $shop['name'] }}
+        </div>
+        <div class="shop-content__tag">
+          #{{ $shop->region['name'] ?? '' }} #{{ $shop->genre['name'] ?? '' }}
+        </div>
+        <div class="shop-content__detail">
+          <form class="detail-form" action="/detail/{{ $shop['id'] }}" method="get">
+            @csrf
+            <button class="detail-button" type="submit">詳しくみる</button>
+          </form>
+          @if (isset($favorite))
+            <img class="favorite-img liked" src="{{ asset('storage/heart_icon.png') }}" data-shop_id="{{ $shop['id'] }}">
+          @else
+            <img class="favorite-img" src="{{ asset('storage/heart_icon.png') }}" data-shop_id="{{ $shop['id'] }}">
+          @endif
+        </div>
+      </div>
     </div>
   </div>
   <div class="review-form">
@@ -113,4 +131,5 @@
   </div>
 </div>
 <script src="{{ asset('js/review.js') }}"></script>
+<script src="{{ asset('js/favorite.js') }}"></script>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ShopReviewRequest;
 use App\Models\Shop;
 use App\Models\ShopReview;
+use App\Models\Favorite;
 use Auth;
 
 class ShopReviewController extends Controller
@@ -19,8 +20,11 @@ class ShopReviewController extends Controller
         // レビュー情報
         $review = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
 
+        // お気に入り情報
+        $favorite = Favorite::FavoriteShopSearch($user_id, $shop_id)->first();
+
         // 評価ページ表示
-        return view('review', compact('shop', 'review', 'prev_id'));
+        return view('review', compact('shop', 'review', 'favorite', 'prev_id'));
     }
 
     public function posts(ShopReviewRequest $request)

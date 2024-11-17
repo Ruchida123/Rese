@@ -135,7 +135,7 @@
     </div>
   </form>
 </div>
-@if (!isset($review))
+@if (Auth::check() && !isset($review))
   <div class="review-link">
     <a href="/review/{{ $shop['id'] }}/2">口コミを投稿する</a>
   </div>

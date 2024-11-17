@@ -34,7 +34,7 @@ class ShopController extends Controller
 
     public function detail(Request $request, $shop_id)
     {
-        $review = []; // 口コミ情報
+        $review = null; // 口コミ情報
         if (Auth::check()) { // ログインしてたら口コミ情報取得
             $user_id = Auth::id();
             $review = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
