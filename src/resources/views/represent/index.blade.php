@@ -38,6 +38,12 @@
           <input class="import-form__item-file" type="file" id="csvFile" name="csvFile" accept="text/csv"/>
         </div>
       </form>
+      <form action="/export" method="post">
+        @csrf
+        <div class="export">
+          <button class="export__button" type="submit">様式ダウンロード</button>
+        </div>
+      </form>
     @endhasrole
     <div class="represent-table__pagination">
       {{ $shops->links() }}

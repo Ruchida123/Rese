@@ -8,6 +8,7 @@ use App\Models\Genre;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Http\Requests\RepresentRequest;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class RepresentController extends Controller
 {
@@ -162,5 +163,25 @@ class RepresentController extends Controller
         $shop->summary = $csvData[3];
         $shop->image_url = $csvData[4];
         $shop->save();
+    }
+
+    public function export(Request $request)
+    {
+        // csvインポート用の様式をダウンロード
+        $csvHeader = ['店舗名', '地域', 'ジャンル', '店舗概要', '画像URL'];
+        $csvData = ['', '', '', '', ''];
+
+        $response = new StreamedResponse(function () use ($csvHeader, $csvData) {
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, $csvHeader);
+            fputcsv($handle, $csvData);
+
+            fclose($handle);
+        }, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="shopImport.csv"',
+        ]);
+
+        return $response;
     }
 }

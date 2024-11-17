@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:admin']], function () {
     Route::post('/admin/register', [AdminController::class, 'register']);
     Route::post('/mail', [MailSendController::class, 'send']);
     Route::post('/import', [RepresentController::class, 'import']);
+    Route::post('/export', [RepresentController::class, 'export']);
 });
 Route::group(['middleware' => ['auth', 'verified', 'role:admin|represent']], function () {
     Route::get('/represent', [RepresentController::class, 'index']);
