@@ -9,7 +9,7 @@
 <div class="review__content">
   <div class="section__title">
     <h2>{{ $shop['name'] }}</h2>
-    <h2>口コミ情報</h2>
+    <h2>口コミ情報 {{ count($reviews) }}件</h2>
   </div>
 
   <div class="review-table">

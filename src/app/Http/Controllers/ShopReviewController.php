@@ -135,4 +135,16 @@ class ShopReviewController extends Controller
         return redirect('/detail/' . $shop_id);
     }
 
+    public function review_all($shop_id)
+    {
+        $user_id = Auth::id();
+        $shop = Shop::find($shop_id);
+
+        // レビュー情報
+        $reviews = ShopReview::where('shop_id', $shop_id)->Paginate(10);
+
+        // 評価ページ表示
+        return view('review_all', compact('shop', 'reviews', 'user_id'));
+    }
+
 }

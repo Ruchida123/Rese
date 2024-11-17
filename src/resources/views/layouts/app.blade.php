@@ -27,6 +27,7 @@
               @hasrole('admin')
               <li><a href="/admin">Home</a></li>
               <li><a href="/admin/register">Registration</a></li>
+              <li><a href="/represent">ShopList</a></li>
               @endhasrole
               @hasrole('represent')
               <li><a href="/represent">Home</a></li>

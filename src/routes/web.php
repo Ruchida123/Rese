@@ -71,5 +71,5 @@ Route::group(['middleware' => ['auth', 'verified', 'role:admin|represent']], fun
 });
 
 Route::group(['middleware' => ['auth', 'verified', 'role:admin|user']], function () {
-    Route::get('/allReview/{shop_id}', [RepresentController::class, 'review_all']);
+    Route::get('/allReview/{shop_id}', [ShopReviewController::class, 'review_all']);
 });
