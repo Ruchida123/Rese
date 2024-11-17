@@ -11,18 +11,15 @@
   <div class="section__title">
     <h2>Admin</h2>
   </div>
-  <!-- 削除予定 -->
-  <!-- <form class="search-form" action="/search" method="get">
-    @csrf
-    <div class="search-form__item">
-      <input class="search-form__item-keyword" type="text" name="keyword"
-        value="{{ old('keyword') }}" placeholder="名前やメールアドレスを入力してください"/>
-    </div>
-    <div class="search-form__button">
-      <button class="search-form__button-submit" type="submit">検索</button>
-    </div>
-  </form> -->
+
   <div class="admin-table">
+    <form class="represent-form" action="/represent" method="get">
+      @csrf
+      <div class="represent-form__button">
+        <button class="represent-form__button-submit" type="submit">店舗情報
+        </button>
+      </div>
+    </form>
     <div class="admin-table__pagination">
       {{ $users->links() }}
     </div>

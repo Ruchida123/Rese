@@ -14,7 +14,7 @@ class RepresentController extends Controller
     public function index()
     {
         // 店舗情報を取得
-        $shops = Shop::with('region', 'genre')->Paginate(5);
+        $shops = Shop::with('region', 'genre')->orderBy('updated_at', 'desc')->Paginate(5);
 
         // ページ表示
         return view('represent.index', compact('shops'));
@@ -117,5 +117,50 @@ class RepresentController extends Controller
 
         // ページ表示
         return view('represent.reservation', compact('reservations', 'shop'));
+    }
+
+    public function import(RepresentRequest $request)
+    {
+        if ($request->hasFile('csvFile')) {
+            // リクエストからファイルを取得
+            $file = $request->file('csvFile');
+
+            // CSVファイルではない場合エラーとする
+            if (!(strcmp($file->getClientMimeType(), 'text/csv') == 0)) {
+                $error = '拡張子が「.csv」のファイルを選択してください。';
+                return redirect('/represent')->with(compact('error'));
+            }
+            $path = $file->getRealPath();
+            // ファイルを開く
+            $fp = fopen($path, 'r');
+            // ヘッダー行をスキップ
+            fgetcsv($fp);
+            // 1行ずつ読み込む
+            while (($csvData = fgetcsv($fp)) !== FALSE) {
+                $this->InsertCsvData($csvData);
+            }
+            // ファイルを閉じる
+            fclose($fp);
+        } else {
+            $error = 'CSVファイルの取得に失敗しました。';
+            return redirect('/represent')->with(compact('error'));
+        }
+
+        // ページ表示
+        return redirect('/represent');
+    }
+
+    public function InsertCsvData($csvData)
+    {
+        // csvファイル情報をインサートする
+        $shop = new Shop;
+        $shop->name = $csvData[0];
+        $region = Region::select('id')->where('name', $csvData[1])->first();
+        $shop->region_id = $region->id;
+        $genre = Genre::select('id')->where('name', $csvData[2])->first();
+        $shop->genre_id = $genre->id;
+        $shop->summary = $csvData[3];
+        $shop->image_url = $csvData[4];
+        $shop->save();
     }
 }

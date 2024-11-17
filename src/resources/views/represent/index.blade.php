@@ -6,12 +6,18 @@
 @endsection
 
 @section('content')
-@if ($errors->all())
+@if ($errors->any())
 <div class="represent__alert">
   <div class="represent__alert--danger">
-    @error('shop_id')
-      {{ $message }} <br>
-    @enderror
+    @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+    @endforeach
+  </div>
+</div>
+@elseif(session('error'))
+<div class="represent__alert">
+  <div class="represent__alert--danger">
+    {{ session('error') }}
   </div>
 </div>
 @endif
@@ -20,18 +26,19 @@
   <div class="section__title">
     <h2>Represent</h2>
   </div>
-  <!-- 削除予定 -->
-  <!-- <form class="search-form" action="/search" method="get">
-    @csrf
-    <div class="search-form__item">
-      <input class="search-form__item-keyword" type="text" name="keyword"
-        value="{{ old('keyword') }}" placeholder="店舗名を入力してください"/>
-    </div>
-    <div class="search-form__button">
-      <button class="search-form__button-submit" type="submit">検索</button>
-    </div>
-  </form> -->
+
   <div class="represent-table">
+    @hasrole('admin')
+      <form class="import-form" action="/import" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="import-form__button">
+          <button class="import-form__button-submit" type="submit">CSVインポート</button>
+        </div>
+        <div class="import-form__item">
+          <input class="import-form__item-file" type="file" id="csvFile" name="csvFile" accept="text/csv"/>
+        </div>
+      </form>
+    @endhasrole
     <div class="represent-table__pagination">
       {{ $shops->links() }}
     </div>

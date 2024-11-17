@@ -8,8 +8,19 @@
     margin: 0 auto;
     width: 90%;
     text-align: center;
-    color: #3366FF;
+    color: #3366ff;
     font-family: serif;
+}
+
+.represent-form__button-submit {
+    padding: 5px 10px;
+    width: 80px;
+    border-radius: 3px;
+    background: #3366ff 30%;
+    color: #fff;
+    border-color: #3366ff;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .admin-table {
@@ -35,7 +46,7 @@
     text-align: left;
     font-weight: bold;
     color: #fff;
-    background-color: #3366FF;
+    background-color: #3366ff;
 }
 
 .admin-table__header:last-of-type {
@@ -68,9 +79,9 @@
     padding: 5px 10px;
     width: 100%;
     border-radius: 3px;
-    background: #3366FF 30%;
+    background: #3366ff 30%;
     color: #fff;
-    border-color: #3366FF;
+    border-color: #3366ff;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -87,7 +98,7 @@
 }
 
 .pagination li {
-    border: 1px solid #E0DFDE;
+    border: 1px solid #e0dfde;
     padding: 5px 10px;
 }
 
@@ -123,49 +134,3 @@
     }
 }
 
-/* 削除予定 */
-/* .search-form {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-bottom: 15px;
-    width: 90%;
-    text-align: center;
-}
-
-.search-form__item {
-    display: flex;
-    width: 100%;
-}
-
-.search-form__item input {
-    overflow: auto;
-}
-
-.search-form__item-keyword {
-    margin-right: 15px;
-    padding: 10px;
-    width: 90%;
-    height: 40px;
-    border: 1px solid #E3DED9;
-    border-radius: 3px;
-    background-color: #FBFBFB;
-}
-
-.search-form__button {
-    width: 20%;
-    display: flex;
-    white-space: nowrap;
-}
-
-.search-form__button-submit {
-    margin-right: 15px;
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    border-radius: 3px;
-    background: #3366FF;
-    color: #fff;
-    cursor: pointer;
-} */
