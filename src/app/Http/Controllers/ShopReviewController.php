@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\MessageBag;
 use App\Http\Requests\ShopReviewRequest;
 use App\Models\Shop;
 use App\Models\ShopReview;
@@ -103,25 +104,44 @@ class ShopReviewController extends Controller
         return redirect('/mypage');
     }
 
-    public function deleteView($shop_id, $prev_id)
+    public function deleteView(Request $request)
     {
-        $user_id = Auth::id();
-        $shop = Shop::find($shop_id);
+        $review_id = $request->review;
+        $prev_id = $request->prev;
 
         // レビュー情報
-        $review = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
+        $review = ShopReview::find($review_id);
+
+        // 店舗情報
+        $shop = Shop::find($review->shop_id);
 
         // 評価ページ表示
         return view('review_delete', compact('shop', 'review', 'prev_id'));
     }
 
-    public function delete(ShopReviewRequest $request)
+    public function delete(Request $request)
     {
-        $user_id = Auth::id();
-        $shop_id = $request->shop_id;
+        $user = Auth::user();
+        $shop_id = $request->shop;
 
         // 削除対象
-        $shopReview = ShopReview::UserShopReviewSearch($user_id, $shop_id)->first();
+        $shopReview = ShopReview::find($request->review);
+
+        if (!isset($shopReview)) {
+            // 対象の口コミ情報がない場合、ホームに遷移
+            if ($user->hasRole('admin')) {
+                return redirect('/represent');
+            }
+            return redirect('/');
+        }
+
+        if ($user->hasRole('user')) {
+            if ($user->id != $shopReview->user_id) {
+                $message = new MessageBag();
+                $message->add('user', '自身の口コミ以外は削除できません');
+                return back()->withErrors($message);
+            }
+        }
 
         if (isset($shopReview->image_url)) {
             // storageから画像を削除
@@ -132,7 +152,7 @@ class ShopReviewController extends Controller
         $shopReview->delete();
 
         // 詳細画面に遷移
-        return redirect('/detail/' . $shop_id);
+        return redirect($request->prev_url);
     }
 
     public function review_all($shop_id)

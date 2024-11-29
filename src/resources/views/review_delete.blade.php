@@ -6,6 +6,26 @@
 @endsection
 
 @section('content')
+@php
+  $prev_url = "/";
+
+  if ($prev_id == 2) {
+    $prev_url = "/detail/" . $shop['id'];
+  } else if ($prev_id == 3) {
+    $prev_url = "/allReview/" . $shop['id'];
+  };
+@endphp
+
+@if ($errors->any())
+<div class="detail__alert">
+  <div class="detail__alert--danger">
+    @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+    @endforeach
+  </div>
+</div>
+@endif
+
 <div class="review-form">
   <div class="review-form__heading">
     <h3  class="review-form__title">{{ $shop['name'] }}</h3>
@@ -14,7 +34,6 @@
     <form class="form" action="/review" method="post">
       @method('DELETE')
       @csrf
-      <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
       <div class="form__group">
         <div class="form__group-content">
           <h4>評価</h4>
@@ -22,7 +41,6 @@
             @for ($i = $review['evaluate']; $i > 0; $i--)
               <span class="star-span">&#x2B50;</span>
             @endfor
-            <input type="hidden" name="evaluate" value="{{ $review['evaluate'] }}">
           </div>
         </div>
       </div>
@@ -33,11 +51,14 @@
         </div>
       </div>
       <div class="form__button">
-        <a href="/detail/{{ $shop['id'] }}">戻る</a>
+        <a href="{{ $prev_url }}">戻る</a>
         <button class="form__button-submit" type="submit">
             口コミを削除
         </button>
       </div>
+      <input type="hidden" name="shop" value="{{ $shop['id'] }}">
+      <input type="hidden" name="review" value="{{ $review['id'] }}">
+      <input type="hidden" name="prev_url" value="{{ $prev_url }}">
     </form>
   </div>
 </div>

@@ -156,8 +156,16 @@
 }
 
 .review-links {
-    font-size: small;
-    text-align: right;
+    display: flex;
+    justify-content: right;
+    font-size: 14px;
+}
+
+.form-button {
+    cursor: pointer;
+    border: none;
+    text-decoration: underline;
+    color: #0000ee;
 }
 
 .review-star {

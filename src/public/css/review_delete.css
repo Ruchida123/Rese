@@ -1,3 +1,17 @@
+/* メッセージエリア */
+.detail__alert--danger {
+    margin: 10px 0;
+    padding: 10px 30px;
+    border-color: #f5c2c7;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.detail__alert--danger ul {
+    margin: 0;
+}
+
+/* formエリア */
 .review-form {
     margin: 10% 0;
 }

@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::patch('/reserve', [ReservationController::class, 'update']);
     Route::get('/update_reserve', [ReservationController::class, 'updateView']);
     Route::get('/review/{shop_id}/{prev_id}', [ShopReviewController::class, 'index']);
-    Route::get('/review/delete/{shop_id}/{prev_id}', [ShopReviewController::class, 'deleteView']);
+    Route::get('/review/delete', [ShopReviewController::class, 'deleteView']);
     Route::post('/review', [ShopReviewController::class, 'posts']);
     Route::delete('/review', [ShopReviewController::class, 'delete']);
     Route::get('success', function () {

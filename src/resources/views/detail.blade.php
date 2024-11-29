@@ -6,24 +6,12 @@
 @endsection
 
 @section('content')
-@if ($errors->all())
+@if ($errors->any())
 <div class="detail__alert">
   <div class="detail__alert--danger">
-    @error('auth')
-      {{ $message }} <br>
-    @enderror
-    @error('shop_id')
-      {{ $message }} <br>
-    @enderror
-    @error('date')
-      {{ $message }} <br>
-    @enderror
-    @error('time')
-      {{ $message }} <br>
-    @enderror
-    @error('number')
-      {{ $message }} <br>
-    @enderror
+    @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+    @endforeach
   </div>
 </div>
 @endif
@@ -57,7 +45,14 @@
       <div class="review">
         <div class="review-links">
           <a href="/review/{{ $shop['id'] }}/2">口コミを編集</a>
-          <a href="/review/delete/{{ $shop['id'] }}/2">口コミを削除</a>
+          <form class="form" action="/review/delete" method="get">
+            @csrf
+            <button class="form-button" type="submit">
+              口コミを削除
+            </button>
+            <input type="hidden" name="review" value="{{ $review['id'] }}">
+            <input type="hidden" name="prev" value="2">
+          </form>
         </div>
         <div class="review-star">
           @for ($i = 1; $i <= 5; $i++)

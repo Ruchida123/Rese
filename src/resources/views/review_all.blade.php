@@ -21,13 +21,26 @@
       <div class="review">
         <div class="review-links">
           @hasrole('admin')
-            <a href="/review/{{ $shop['id'] }}/2">口コミを編集</a>
-            <a href="/review/delete/{{ $shop['id'] }}/2">口コミを削除</a>
+            <form class="form" action="/review/delete" method="get">
+              @csrf
+              <button class="form-button" type="submit">
+                口コミを削除
+              </button>
+              <input type="hidden" name="review" value="{{ $review['id'] }}">
+              <input type="hidden" name="prev" value="3">
+            </form>
           @endhasrole
           @hasrole('user')
             @if ($review['user_id'] == $user_id)
               <a href="/review/{{ $shop['id'] }}/2">口コミを編集</a>
-              <a href="/review/delete/{{ $shop['id'] }}/2">口コミを削除</a>
+              <form class="form" action="/review/delete" method="get">
+                @csrf
+                <button class="form-button" type="submit">
+                  口コミを削除
+                </button>
+                <input type="hidden" name="review" value="{{ $review['id'] }}">
+                <input type="hidden" name="prev" value="3">
+              </form>
             @endif
           @endhasrole
         </div>
