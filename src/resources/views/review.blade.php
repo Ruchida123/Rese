@@ -124,7 +124,7 @@
             口コミを投稿
           @endif
         </button>
-        <a href="{{ $prev_url }}">戻る</a>
+        <a class="back" href="{{ $prev_url }}">戻る</a>
       </div>
       <input type="hidden" name="prev_id" value="{{ $prev_id }}"/>
     </form>

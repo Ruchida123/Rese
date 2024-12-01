@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="form__button">
-        <a href="{{ $prev_url }}">戻る</a>
+        <a class="back" href="{{ $prev_url }}">戻る</a>
         <button class="form__button-submit" type="submit">
             口コミを削除
         </button>

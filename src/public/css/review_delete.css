@@ -96,6 +96,21 @@
     white-space: nowrap;
 }
 
+.back {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: #3366ff;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    align-content: center;
+    font-size: smaller;
+}
+
 .stars {
     text-align: left;
 }
