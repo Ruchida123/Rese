@@ -73,12 +73,16 @@ Laravel環境構築
 6. php artisan db:seed
 7. php artisan storage:link
 8. php artisan schedule:work（リマインダー機能確認用）
+9. 初期表示時に「The stream or file ~ could not be opened in append mode」のエラーが発生した場合・・・②
 
 ① 環境変数の設定（DB関連は割愛）
 1. 「MAIL_FROM_ADDRESS」に任意のメールアドレスを設定（例：sample@example.com）
 2. 「STRIPE_KEY」にStripeのAPIキーの公開可能キーを設定
 3. 「STRIPE_SECRET」にStripeのAPIキーのシークレットキーを設定
 4. 「CASHIER_CURRENCY」に「jpy」を設定
+
+②以下コマンドを実行 <br>
+chmod -R 777 storage bootstrap/cache
 
 ## アカウントの種類（テストユーザー）
 | 権限 | メールアドレス | パスワード |
