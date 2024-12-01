@@ -172,6 +172,11 @@ class RepresentController extends Controller
         $csvHeader = ['店舗名', '地域', 'ジャンル', '店舗概要', '画像URL'];
         $csvData = ['', '', '', '', ''];
 
+        // 文字コード変換
+        $csvHeader = array_map(function ($header) {
+            return mb_convert_encoding($header, 'SJIS-win', 'UTF-8');
+        }, $csvHeader);
+
         $response = new StreamedResponse(function () use ($csvHeader, $csvData) {
             $handle = fopen('php://output', 'w');
             fputcsv($handle, $csvHeader);
