@@ -44,7 +44,6 @@ class RepresentRequest extends FormRequest
             return [
                 'name' => ['sometimes', 'required', 'string', 'max:255'],
                 'csvFile' => ['sometimes', 'required', 'mimes:csv,txt'],
-                'csv_array' => ['sometimes', 'required', 'array'],
                 'csv_array.*.name' => ['required', 'max:50'],
                 'csv_array.*.region' => ['required', Rule::in($region_names)],
                 'csv_array.*.genre' => ['required', Rule::in($genre_names)],
@@ -96,6 +95,7 @@ class RepresentRequest extends FormRequest
             ]);
         } else {
             $this->merge([
+                'csv_array' => [],
                 'csvFile' => $req_file,     //requestに項目追加
             ]);
         }
